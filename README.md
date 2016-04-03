@@ -11,7 +11,7 @@ Mod pack for World of Tanks game
 * [Jactor Mod Pack v1.9 - 9.14.1](http://www.wotinfo.hu/index.php/add-ons/item/335-jacktor-mod-pack)
   * J1mb0 crosshair mod
   * XVM (default config + colors + hitlog + minimap + tank list in two rows)
-  * Hitlog
+  * Improved hitlog panel
   * Precision damage indicator
   * Risky contour icons
   * Zoom in-out (PMOD)
