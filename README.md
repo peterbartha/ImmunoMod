@@ -15,7 +15,7 @@ Mod pack for [World of Tanks](http://worldoftanks.eu/) game
   * Precision damage indicator
   * Risky contour icons
   * Zoom in-out (PMOD)
-  * YasenKrasen daily statistics (only Hungarian language available)
+  * YasenKrasen daily statistics (available only in Hungarian)
 * [Battle Assistant Artillery Mod - 9.14](http://www.wotinfo.hu/index.php/add-ons/item/1623-battle-assistant-artillery-mod-0-9-5)
 * Custom SixthSense badge (with default sounds)
 * Updated XVM config:
