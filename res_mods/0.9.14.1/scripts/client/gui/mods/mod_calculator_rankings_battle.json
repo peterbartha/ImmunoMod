@@ -66,7 +66,7 @@
 		    "enable": true,
             "alignX": "left",
             "alignY": "top",
-            "format": "<b><textformat tabstops='[80]'><font color='#ffffff' size='13' face='$TextFont'>WN8: <font color='{colorWN8}'>{WN8}</font><tab>EFF: <font color='{colorEFF}'>{EFF}</font></font></textformat></b>", 
+            "format": "<textformat tabstops='[80]'><font color='#ffffff' size='13' face='$TextFont'>WN8: <font color='{colorWN8}'>{WN8}</font><tab>EFF: <font color='{colorEFF}'>{EFF}</font></font></textformat>", 
 			"x": 125,
             "y": 25
         },
