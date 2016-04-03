@@ -1,5 +1,5 @@
 # ImmunoMod
-Mod pack for World of Tanks game
+Mod pack for [World of Tanks](http://worldoftanks.eu/) game
 
 ## Install
 * Download the latest version of this mod, and check its compatibility.
