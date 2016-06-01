@@ -3,14 +3,14 @@
  * at Thu Nov 19 14:29:08 GMT+0100 2015
  */
 {
-  "configVersion": "6.1.0",
+  "configVersion": "6.3.1",
   "editorVersion": "0.76",
   "definition": {
     "author": "XVM team",
-    "date": "01.11.2015",
+    "date": "01.05.2016",
     "description": "Default settings for XVM",
-    "gameVersion": "0.9.12",
-    "modMinVersion": "6.1.6",
+    "gameVersion": "0.9.15",
+    "modMinVersion": "6.3.1",
     "url": "http://www.modxvm.com/"
   },
   "rating": {
@@ -27,7 +27,7 @@
       "alpha": 80,
       "columnGap": 10,
       "delimiter": ": ",
-      "enabled": true,
+      "enabled": false,
       "fontStyle": {
         "bold": false,
         "color": { "bad": "0xD64D4D", "good": "0xE5E4E1", "great": "0xFFCC66", "poor": "0x96948F" },
@@ -149,6 +149,106 @@
         "consumablesPanel": { "_alpha": 100, "_x": "consumablesPanel._x + 0", "_y": "consumablesPanel._y - 0" }
       }
     ],
+	"camera": {
+		// false - disable camera settings.
+		// false - отключить настройки камеры.
+		"enabled": true,
+		// Arcade mode
+		// Аркадный режим
+		"arcade": {
+		  // Camera distance range: [min, max], default - [2, 25]
+		  // Отдаление камеры: [мин, макс], по умолчанию - [2, 25]
+		  "distRange": [2, 200],
+		  // Start distance (null for default behavior - saved state from the last battle)
+		  // Начальная дистанция (null для поведения по умолчанию - сохраненная позиция из последнего боя)
+		  "startDist": null,
+		  // Чувствительность прокрутки (default = 5)
+		  // Scroll sensitivity (по умолчанию = 5)
+		  "scrollSensitivity": 4,
+		  // false - disable dynamic camera
+		  // false - выключить динамическую камеру
+		  "dynamicCameraEnabled": true
+		},
+		// Postmortem mode
+		// Режим после смерти
+		"postmortem": {
+		  // Camera distance range: [min, max], default - [2, 25]
+		  // Отдаление камеры: [мин, макс], по умолчанию - [2, 25]
+		  "distRange": [2, 200],
+		  // Start distance (null for default behavior - maximum distance)
+		  // Начальная дистанция (null для поведения по умолчанию - максимальная дистанция)
+		  "startDist": null,
+		  // Чувствительность прокрутки (default = 5)
+		  // Scroll sensitivity (по умолчанию = 5)
+		  "scrollSensitivity": 4,
+		  // false - disable dynamic camera
+		  // false - выключить динамическую камеру
+		  "dynamicCameraEnabled": true
+		},
+		// Strategic mode (arty)
+		// Стратегический режим (арта)
+		"strategic": {
+		  // Camera distance range: [min, max], default - [40, 100]
+		  // Отдаление камеры: [мин, макс], по умолчанию - [40, 100]
+		  "distRange": [40, 200],
+		  // false - disable dynamic camera
+		  // false - выключить динамическую камеру
+		  "dynamicCameraEnabled": true
+		},
+		// Sniper mode
+		// Снайперский режим
+		"sniper": {
+		  // List of multiplicities for the sniper mode
+		  // Default: [ 2, 4, 8 ]. It's possible to use a greater number of values.
+		  // Список значений кратности для снайперского режима
+		  // По умолчанию: [ 2, 4, 8 ]. Можно использовать большее количество значений.
+		  "zooms": [2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 36],
+		  // Start zoom value (null for default behavior - last used state)
+		  // Начальное значение кратности (null для поведения по умолчанию - последнее использовавшееся значение)
+		  "startZoom": null,
+		  // Zoom Indicator
+		  // Global macros allowed in all fields
+		  // Индикатор масштаба
+		  // Можно использовать глобальные макросы во всех полях
+		  "zoomIndicator": {
+			// false - disable.
+			// false - выключить.
+			"enabled": false,
+			// Field position relative to screen center
+			// Положение поля относительно центра экрана
+			"x": 150,
+			"y": 30,
+			// Field size
+			// Размер поля
+			"width": 100,
+			"height": 40,
+			// Opacity in percents (0..100)
+			// Прозрачность
+			"alpha": 100,
+			// Horizonatal text alignment (left, center, right)
+			// Горизонтальное выравнивание текста (left, center, right)
+			"align": "left",
+			// Vertical text alignment (top, center, bottom)
+			// Вертикальное выравнивание текста (top, center, bottom)
+			"valign": "center",
+			// Background color
+			// Цвет фона
+			"bgColor": null,
+			// Border color 
+			// Цвет рамки
+			"borderColor": null,
+			// Shadow settings
+			// Настройки тени
+			"shadow": { "distance": 0, "angle": 0, "color": "0x192E0E", "alpha": 100, "blur": 3, "strength": 7 },
+			// Text format
+			// Формат текста
+			"format": "<font face='$TitleFont' color='#95CB29' size='16'>x{{zoom}}</font>"
+		  },
+		  // false - disable dynamic camera
+		  // false - выключить динамическую камеру
+		  "dynamicCameraEnabled": true
+		}	  
+	},
     "highlightVehicleIcon": true,
     "mirroredVehicleIcons": true,
     "showPostmortemTips": true
@@ -214,8 +314,8 @@
   "fragCorrelation": { "hideTeamTextFields": true },
   "hotkeys": { "minimapZoom": { "enabled": true, "keyCode": 29, "onHold": true } },
   "hitLog": {
-    "visible": true,
-    "x": 270,
+    "visible": false,
+    "x": 300,
     "blowupMarker": "&#x78;",
     "deadMarker": "&#x77;",
     "defaultHeader": "<font color='#FFFFFF'>{{l10n:Hits}}:</font> <font size='13'>#0</font>",
