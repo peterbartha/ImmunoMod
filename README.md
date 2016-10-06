@@ -1,4 +1,4 @@
-# ImmunoMod v1.2.0
+# ImmunoMod v1.3.0
 Mod pack for [World of Tanks 9.16](http://worldoftanks.eu/) game
 
 ## Install
