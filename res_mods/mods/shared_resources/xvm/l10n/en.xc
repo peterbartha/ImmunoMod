@@ -15,6 +15,7 @@
     "No": "No",
     "Not available short": "n/a",
     "from": "from",
+    "m": "m",
 
     // Ping & Online
     "Initialization": "Initialization",
@@ -25,8 +26,6 @@
     "Chance error": "Chance error",
     "Chance to win": "Chance to win",
     "Team strength": "Team strength",
-    //"global": "global",
-    //"per-vehicle": "per-vehicle",
     "chanceLive": "For alive",
     "chanceBattleTier": "Battle tier",
 
@@ -42,14 +41,15 @@
     "Total": "Total",
     "Last": "Last",
 
-    // Hp Left
-    "hpLeftTitle": "Hitpoints left:",
-
     // Capture
     "enemyBaseCapture": "Base{0} capture by allies!",
     "enemyBaseCaptured": "Base{0} captured by allies!",
     "allyBaseCapture": "Base{0} capture by enemies!",
     "allyBaseCaptured": "Base{0} captured by enemies!",
+
+    // Battle interface labels
+    "avgDamage": "Avg damage",
+    "mainGun": "High caliber",
 
     // BattleResults
     "Hit percent": "Hit percent",
@@ -126,7 +126,6 @@
     "terrainResistance": "Terrain resistance",
     "gravity": "Gravity",
     "shellSpeed": "Shell speed",
-    "camoCoeff": "Camo coefficients",
     "general": "General",
     "armor": "Armor",
     "firepower": "Firepower",
@@ -153,6 +152,7 @@
     "china": "China",
     "japan": "Japan",
     "czech": "Сzech",
+    "swedish": "Swedish",
     
     // Vehicle type
     "HT": "HT",
@@ -173,7 +173,7 @@
     // Token
     "token/services_unavailable": "Network services unavailable.&nbsp;&nbsp;<a href='#XVM_SITE_UNAVAILABLE#'><font size='11'>more info</font></a>",
     "token/services_inactive": "Network services inactive.&nbsp;&nbsp;<a href='#XVM_SITE_INACTIVE#'><font size='11'>enable</font></a>",
-    "token/blocked": "Status: <font color='#FF0000'>Blocked</font>&nbsp;&nbsp;<a href='#XVM_SITE_BLOCKED'><font size='11'>more info</font></a>",
+    "token/blocked": "Status: <font color='#FF0000'>Blocked</font>&nbsp;&nbsp;<a href='#XVM_SITE_BLOCKED#'><font size='11'>more info</font></a>",
     "token/active": "Status:<tab/><font color='#00FF00'>Active</font>",
     "token/time_left": "Time left:<tab/><font color='#EEEEEE'>{0}d. {1}h. {2}m.</font>",
     "token/time_left_warn": "Time left:<tab/><font color='#EEEE00'>{0}d. {1}h. {2}m.</font>",
@@ -195,10 +195,20 @@
 
     // Carousel
     "Normal": "Normal",
+    "NormalTooltipHeader": "Normal Vehicles",
+    "NormalTooltipBody": "Show/hide normal (non-premium) vehicles.",
     "NonElite": "Non elite",
+    "NonEliteTooltipHeader": "Non Elite Vehicles",
+    "NonEliteTooltipBody": "Show/hide vehicles with not all modules and technical branches researched.",
     "CompleteCrew": "Complete crew",
+    "CompleteCrewTooltipHeader": "Complete Crew",
+    "CompleteCrewTooltipBody": "Show/hide vehicles with complete crew.",
     "NoMaster": "No master",
+    "NoMasterTooltipHeader": "No Master",
+    "NoMasterTooltipBody": "Show/hide vehicles without \"Ace Tanker\" mastery badge.",
     "ReserveFilter": "Reserve",
+    "ReserveFilterTooltipHeader": "Reserve",
+    "ReserveFilterTooltipBody": "Show/hide reserved vehicles.",
     "check_reserve_menu": "Set as reserve",
     "uncheck_reserve_menu": "Uncheck Reserve label",
     "reserve_confirm_title": "Hide tank",

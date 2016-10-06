@@ -15,6 +15,7 @@
     "No": "Нет",
     "Not available short": "н/д",
     "from": "из",
+    "m": "м",
 
     // Ping & Online
     "Initialization": "Инициализация",
@@ -25,8 +26,6 @@
     "Chance error": "Ошибка расчета шансов",
     "Chance to win": "Шансы на победу",
     "Team strength": "Силы команд",
-    //"global": "общий",
-    //"per-vehicle": "по технике",
     "chanceLive": "Для живых",
     "chanceBattleTier": "Уровень боя",
 
@@ -42,14 +41,15 @@
     "Total": "Всего",
     "Last": "Последний",
 
-    // Hp Left
-    "hpLeftTitle": "Осталось HP:",
-
     // Capture
     "enemyBaseCapture": "Захват базы{0} союзниками!",
     "enemyBaseCaptured": "База{0} захвачена союзниками!",
     "allyBaseCapture": "Захват базы{0} врагами!",
     "allyBaseCaptured": "База{0} захвачена врагами!",
+
+    // Battle interface labels
+    "avgDamage": "Средний урон",
+    "mainGun": "Основной калибр",
 
     // BattleResults
     "Hit percent": "Процент попаданий",
@@ -126,7 +126,6 @@
     "terrainResistance": "Сопротивление грунтов",
     "gravity": "Гравитация",
     "shellSpeed": "Скорость снаряда",
-    "camoCoeff": "Коэффициенты маскировки",
     "general": "Общие",
     "armor": "Бронирование",
     "firepower": "Огневая мощь",
@@ -153,6 +152,7 @@
     "china": "Китай",
     "japan": "Япония",
     "czech": "Чехословакия",
+    "swedish": "Швеция",
     
     // Vehicle type
     "HT": "ТТ",
@@ -191,10 +191,20 @@
 
     // Carousel
     "Normal": "Обычная",
+    "NormalTooltipHeader": "Обычная техника",
+    "NormalTooltipBody": "Включить/отключить отображение обычной (не премиум) техники.",
     "NonElite": "Не элитная",
+    "NonEliteTooltipHeader": "Не элитная техника",
+    "NonEliteTooltipBody": "Включить/отключить отображение техники, на которой исследованы не все модули и следующие в ветке развития машины.",
     "CompleteCrew": "Полный экипаж",
+    "CompleteCrewTooltipHeader": "Полный экипаж",
+    "CompleteCrewTooltipBody": "Включить/отключить отображение техники с полным экипажем.",
     "NoMaster": "Нет мастера",
+    "NoMasterTooltipHeader": "Нет мастера",
+    "NoMasterTooltipBody": "Включить/отключить отображение техники без знаки классности «Мастер».",
     "ReserveFilter": "Резерв",
+    "ReserveFilterTooltipHeader": "Резерв",
+    "ReserveFilterTooltipBody": "Включить/отключить отображение резервной техники.",
     "check_reserve_menu": "Отметить как «резерв»",
     "uncheck_reserve_menu": "Снять отметку «резерв»",
     "reserve_confirm_title": "Спрятать танк",
