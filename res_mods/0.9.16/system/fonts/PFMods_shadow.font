@@ -1,0 +1,19 @@
+<PFMods_shadow.font>
+	<creation>
+		<sourceFont>	Arial	</sourceFont>
+		<sourceFontSize>	12	</sourceFontSize>
+		<startChar>	32	</startChar>
+		<endChar>	255	</endChar>
+		<effectsMargin>	1.000000	</effectsMargin>
+		<textureMargin>	1.000000	</textureMargin>
+		<dropShadow>	true	</dropShadow>
+		<shadowAlpha>	96	</shadowAlpha>
+		<bold>	true	</bold>
+	</creation>
+	<factory>
+	<map>	system/fonts/PFMods_fontsFactory.dds	</map>
+	<layout>0x34</layout>
+	<wickedByte>572</wickedByte>
+	<owner>app_factory</owner>
+	</factory>
+</PFMods_shadow.font>

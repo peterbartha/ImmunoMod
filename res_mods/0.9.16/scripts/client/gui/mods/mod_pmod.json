@@ -61,7 +61,7 @@
 			
 			// true - включить функцию.
 			// true - enable function.
-			"enable": false
+			"enable": true
 		},
 		
 	
@@ -459,7 +459,7 @@
 
 		// true - включить функцию.
 		// true - enable function.
-		"enable": true,
+		"enable": false,
 		
 		// Автоматически обнулять статистику по истечению срока годности.
 		// Automatically reset the statistics after the expiration date.

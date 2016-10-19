@@ -1,0 +1,44 @@
+{
+    "date": "2016-10-08",
+    "players": {
+        "Jacktor": {
+            "battles": [
+                {
+                    "assist": 790,
+                    "assistRadio": 790,
+                    "assistTrack": 0,
+                    "autoEquipCost": 1500,
+                    "autoLoadCost": 320,
+                    "autoRepairCost": 1480,
+                    "autoServiceCost": 3300,
+                    "battleTier": 6,
+                    "cap": 0,
+                    "dailyXPFactor": 1,
+                    "damage": 420,
+                    "damageRec": 350,
+                    "death": 1,
+                    "def": 0,
+                    "frag": 1,
+                    "freeXP": 21,
+                    "gold": 0,
+                    "grossCredits": 15219,
+                    "hits": 12,
+                    "idNum": 881,
+                    "map": "96_prohorovka_defense",
+                    "netCredits": 11919,
+                    "originalXP": 296,
+                    "pierced": 10,
+                    "place": 6,
+                    "potDamageRec": 380,
+                    "result": -1,
+                    "shots": 13,
+                    "spot": 2,
+                    "tier": 4,
+                    "vehicle": "czech-Cz11_V_8_H",
+                    "xp": 444
+                }
+            ]
+        }
+    },
+    "version": 6
+}
