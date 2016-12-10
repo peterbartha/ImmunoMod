@@ -103,22 +103,19 @@
     WN8                      WN8 rating
     XWN8                     WN8 rating in XVM scale (0-100)
 
-   Type of battle for "battleType" section:
-     0 Special Battle (Clan War etc.)
+   Type of battle for "ignoreBattleType" section:
      1 Random Battle
      2 Team Training
      3 Tank Company Battle
-     4 Tutorial
-     5 Team Battle
-     6 Fallout
-     7 Event Battle (8-bit, Tank Football, Tank Racing etc.)
-     8 Stronghold Skirmishes
-     9 Stronghold Battle
-    10 Rated Team Battle
-    11 Rated Sandbox
-    12 Sandbox
-    13 Fallout Classic
-    14 Fallout MultiTeam
+     4 Tournament Battle
+     5 Clan War Battle
+     6 Tutorial
+     7 Team Battle
+     8 Historical Battle
+     9 Random Battle Events
+    10 Stronghold Skirmishes
+    11 Stronghold Battle
+    12 Rated Team Battle
 
    Decimal places and right alignment of macros
     :d                       Macro without decimal ({{deathsRate:d}} will be displayed '63')
@@ -127,3 +124,7 @@
     :1-20.1f                 Align macro to the right with a fixed width 1-20 and one decimal ({{netCredits:10.1f}} will be displayed '   1 540.0'
     :1-20.2f                 Align macro to the right with a fixed width 1-20 and two decimal ({{netCredits:10.2f}} will be displayed '  1 540.00'
                             *Note, for the alignment to work properly, you need to use a monospaced font with fixed width! (i.e. Courier New, Consolas or similar font)
+
+
+
+

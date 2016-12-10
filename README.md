@@ -1,29 +1,17 @@
-# ImmunoMod v1.3.1
-Mod pack for [World of Tanks 9.16](http://worldoftanks.eu/) game
+# ImmunoMod v1.3.2
+Mod pack for [World of Tanks v.0.9.16, 274](http://worldoftanks.eu/) game
 
 ## Install
 * Download the latest version of this mod, and check its compatibility.
-* Copy `DamageLog.otf` and `` font file from `_fonts` to `C:/Windows/Fonts` directory
+* Install fonts from `res_mods/fonts` folder
 * Copy `res_mods` folder into `<Drive>:\<Path to World_of_Tanks>\`
 * Play! :)
 
-## Contains (based on [Jacktor's mod pack](http://www.wotinfo.hu/index.php/add-ons/item/335-jacktor-mod-pack))
-* XVM mod with custom colors
-* Fog Remover
-* WoT Tweaker Plus
-* Extended Zoom
-* AntiToxicity
-* Battle Assistant - Artillery Mod
-* Real time calculated WN8 and EFF in battle (approx.)
-* Gambiter Damage Panel
-* J1mbo crosshair mod
-* Jacktor mod pack
-* PMOD
-* Extended PMOD
-* Risky contour icons
-* YasenKrasen daily statistics
-* Custom SixthSense badge (with default sounds)
-* Ping meter in hangar
+## Contains (from collection of [wotinfo.hu] (http://wotinfo.hu))
+* Battle Assistant Artillery Mod (v.1.3.8.9.16)
+* FullTankstat by KopiBDW (0.9.16_V2)
+* InBattle WN8 Calculator, EFF (0.9.16, 06.12.2016)
+* Risky's Colored Contour Icons (9.16.0)
 
 ## License
 Released under the [MIT](https://github.com/peterbartha/ImmunoMod/blob/master/LICENSE) license.
