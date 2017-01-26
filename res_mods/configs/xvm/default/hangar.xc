@@ -42,7 +42,7 @@
     "barracksShowSkills": true,
     // true - Enable removable equipment auto return (Camouflage net, Stereoscope, Toolbox)
     // true - Включить автовозврат съемного оборудования (Маскировочная сеть, Стереотруба, Ящик с инструментами)
-    "enableEquipAutoReturn": false,
+    "enableEquipAutoReturn": true,
     // true - Make vehicle not ready for battle if low ammo
     // true - Сделать машину не готовой к битве если мало снарядов
     "blockVehicleIfLowAmmo": false,
