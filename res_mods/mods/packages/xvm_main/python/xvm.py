@@ -1,4 +1,4 @@
-""" XVM (c) www.modxvm.com 2013-2016 """
+""" XVM (c) www.modxvm.com 2013-2017 """
 
 import traceback
 import simplejson
@@ -323,6 +323,9 @@ class Xvm(object):
 
         if g_appLoader.getSpaceID() == GUI_GLOBAL_SPACE_ID.LOBBY:
             svcmsg.tokenUpdated()
+
+        g_eventBus.handleEvent(events.HasCtxEvent(XVM_EVENT.XVM_SERVICES_INITIALIZED))
+
 
     def onKeyEvent(self, event):
         try:

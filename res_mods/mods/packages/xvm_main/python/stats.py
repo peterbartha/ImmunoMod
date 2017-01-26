@@ -1,4 +1,4 @@
-""" XVM (c) www.modxvm.com 2013-2016 """
+""" XVM (c) www.modxvm.com 2013-2017 """
 
 #############################
 # Command
@@ -558,8 +558,7 @@ class _Stat(object):
         if 'fb' not in v or v['fb'] < 0:
             return
         v['xte'] = vehinfo_xte.calculateXTE(v['id'], float(v['db']), float(v['fb']))
-        #log(v['xte'])
-
+        #log(str(v['id']) + " xte=" + str(v['xte']))
 
     def _addContactData(self, stat):
         # try to add changed nick and comment
