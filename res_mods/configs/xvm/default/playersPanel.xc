@@ -99,7 +99,7 @@
     "removePanelsModeSwitcher": false,
     // Start panels mode. Possible values: "none", "short", "medium", "medium2", "large".
     // Начальный режим ушей. Возможные значения: "none", "short", "medium", "medium2", "large".
-    "startMode": "medium2",
+    "startMode": "large",
     // Alternative panels mode. Possible values: null, "none", "short", "medium", "medium2", "large".
     // Альтернативный режим ушей. Возможные значения: null, "none", "short", "medium", "medium2", "large".
     "altMode": null,

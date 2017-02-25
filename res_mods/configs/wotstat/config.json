@@ -118,72 +118,72 @@
         },
     "gradient": {
         "EFF": [
-            {"value": 610,   "color": "#FE0E00"},
-            {"value": 850,   "color": "#FE7903"},
-            {"value": 1145,   "color": "#F8F400"},
-            {"value": 1475,  "color": "#60FF00"},
-            {"value": 1775,  "color": "#02C9B3"},
-            {"value": 9999,  "color": "#D042F3"}
+            {"value": 0,     "color": "#FE0E00"},
+            {"value": 610,   "color": "#FE7903"},
+            {"value": 875,   "color": "#F8F400"},
+            {"value": 1175,  "color": "#60FF00"},
+            {"value": 1540,  "color": "#02C9B3"},
+            {"value": 1880,  "color": "#D042F3"}
         ],
         "WN6": [
-            {"value": 410,   "color": "#FE0E00"},
-            {"value": 795,   "color": "#FE7903"},
-            {"value": 1185,   "color": "#F8F400"},
-            {"value": 1585,  "color": "#60FF00"},
-            {"value": 1925,  "color": "#02C9B3"},
-            {"value": 9999,  "color": "#D042F3"}
+            {"value": 0,     "color": "#FE0E00"},
+            {"value": 470,   "color": "#FE7903"},
+            {"value": 860,   "color": "#F8F400"},
+            {"value": 1225,  "color": "#60FF00"},
+            {"value": 1635,  "color": "#02C9B3"},
+            {"value": 1990,  "color": "#D042F3"}
         ],
         "WN7": [
-            {"value": 505,   "color": "#FE0E00"},
-            {"value": 865,   "color": "#FE7903"},
-            {"value": 1225,   "color": "#F8F400"},
-            {"value": 1635,  "color": "#60FF00"},
-            {"value": 1995,  "color": "#02C9B3"},
-            {"value": 9999,  "color": "#D042F3"}
+            {"value": 0,     "color": "#FE0E00"},
+            {"value": 505,   "color": "#FE7903"},
+            {"value": 865,   "color": "#F8F400"},
+            {"value": 1225,  "color": "#60FF00"},
+            {"value": 1635,  "color": "#02C9B3"},
+            {"value": 1995,  "color": "#D042F3"}
         ],
         "WN8": [
-            {"value": 300,   "color": "#930D0D"},
-            {"value": 450,   "color": "#F11919"},
-            {"value": 650,   "color": "#FF8A00"},
-            {"value": 900,   "color": "#E6DF27"},
-            {"value": 1200,  "color": "#77E812"},
-            {"value": 1600,  "color": "#459300"},
-            {"value": 2000,  "color": "#2AE4FF"},
-            {"value": 2450,  "color": "#00A0B8"},
-            {"value": 2900,  "color": "#C64CFF"},
-            {"value": 9999,  "color": "#8225AD"}
+            {"value": 0,     "color": "#930D0D"},
+            {"value": 300,   "color": "#F11919"},
+            {"value": 450,   "color": "#FF8A00"},
+            {"value": 650,   "color": "#E6DF27"},
+            {"value": 900,   "color": "#77E812"},
+            {"value": 1200,  "color": "#459300"},
+            {"value": 1600,  "color": "#2AE4FF"},
+            {"value": 2000,  "color": "#00A0B8"},
+            {"value": 2450,  "color": "#C64CFF"},
+            {"value": 2900,  "color": "#8225AD"}
         ],
         "rDAMAGE": [
-            {"value": 0.14,  "color": "#FE0E00"},
-            {"value": 0.44,  "color": "#FE7903"},
-            {"value": 0.76,  "color": "#F8F400"},
-            {"value": 1.07,  "color": "#60FF00"},
-            {"value": 1.35,  "color": "#02C9B3"},
-            {"value": 1.60,  "color": "#D042F3"}
+            {"value": 0.34,  "color": "#FE0E00"},
+            {"value": 0.57,  "color": "#FE7903"},
+            {"value": 0.81,  "color": "#F8F400"},
+            {"value": 1.03,  "color": "#60FF00"},
+            {"value": 1.22,  "color": "#02C9B3"},
+            {"value": 1.57,  "color": "#D042F3"}
         ],
         "rFRAG": [
-            {"value": 0.14,  "color": "#FE0E00"},
-            {"value": 0.44,  "color": "#FE7903"},
-            {"value": 0.76,  "color": "#F8F400"},
-            {"value": 1.07,  "color": "#60FF00"},
-            {"value": 1.35,  "color": "#02C9B3"},
-            {"value": 1.60,  "color": "#D042F3"}
+            {"value": 0.34,  "color": "#FE0E00"},
+            {"value": 0.57,  "color": "#FE7903"},
+            {"value": 0.81,  "color": "#F8F400"},
+            {"value": 1.03,  "color": "#60FF00"},
+            {"value": 1.22,  "color": "#02C9B3"},
+            {"value": 1.57,  "color": "#D042F3"}
         ],
         "rSPOT": [
-            {"value": 0.14,  "color": "#FE0E00"},
-            {"value": 0.44,  "color": "#FE7903"},
-            {"value": 0.76,  "color": "#F8F400"},
-            {"value": 1.07,  "color": "#60FF00"},
-            {"value": 1.35,  "color": "#02C9B3"},
-            {"value": 1.60,  "color": "#D042F3"}
+            {"value": 0.34,  "color": "#FE0E00"},
+            {"value": 0.57,  "color": "#FE7903"},
+            {"value": 0.81,  "color": "#F8F400"},
+            {"value": 1.03,  "color": "#60FF00"},
+            {"value": 1.22,  "color": "#02C9B3"},
+            {"value": 1.57,  "color": "#D042F3"}
         ],
         "rDEF": [
-            {"value": 0.14,  "color": "#FE0E00"},
-            {"value": 0.44,  "color": "#FE7903"},
-            {"value": 0.76,  "color": "#F8F400"},
-            {"value": 1.07,  "color": "#60FF00"},
-            {"value": 1.35,  "color": "#02C9B3"},
-            {"value": 1.60,  "color": "#D042F3"}
+            {"value": 0.34,  "color": "#FE0E00"},
+            {"value": 0.57,  "color": "#FE7903"},
+            {"value": 0.81,  "color": "#F8F400"},
+            {"value": 1.03,  "color": "#60FF00"},
+            {"value": 1.22,  "color": "#02C9B3"},
+            {"value": 1.57,  "color": "#D042F3"}
         ],
         "avgPlace": [
             {"value": 1,     "color": "#D042F3"},
