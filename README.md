@@ -7,6 +7,7 @@ Mod pack for [World of Tanks v.0.9.17.1, 309](http://worldoftanks.eu/) game
 * Play! :)
 
 ## Contains (from collection of [wotinfo.hu] (http://wotinfo.hu))
+* XVM (pure from modxvm's site)
 * Battle Assistant Artillery Mod
 * FullTankstat by KopiBDW
 * InBattle WN8 Calculator, EFF
