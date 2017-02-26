@@ -1,4 +1,4 @@
-# ImmunoMod v1.5.0
+# ImmunoMod v1.5.1
 Mod pack for [World of Tanks v.0.9.17.1, 309](http://worldoftanks.eu/) game
 
 ## Install
