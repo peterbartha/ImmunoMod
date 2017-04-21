@@ -1,4 +1,79 @@
-﻿XVM-6.5.5:
+﻿XVM-6.6.0:
+  [GENERAL]
+  * adaptation to World of Tanks 9.18
+
+  [XFW]
+  * part of the functionality (ping, XInput) was moved from XVM to XFW
+  * partially switch to .wotmod packages format
+  * XFW can now be used without XVM
+  
+  [TOOLTIPS]
+  * Updated avaliable parameters list (tooltips.xc) 
+  
+  [DAMAGE LOG]
+  * 'alive' value of a macro {{my-alive} } is renamed into 'al'
+  * added macroses {{wn6}}, {{xwn6}}, {{r}}, {{c:wn6}}, {{c:xwn6}}, {{c:r}}
+  
+  [PYTHON MACROSES]
+  * totalEfficiency: added the macros {{py:xvm.totalStun}}, {{py:xvm.isStuns}}, {{py:xvm.numberStuns}}
+  
+  [WIDGETS]
+  * added new function - widgets in login and lobby
+    currently only "extrafields" widget type implemented
+    configuration files: widgets.xc, widgetsTemplates.xc
+    referenced from login.xc, hangar.xc
+
+  [BATTLE LABELS]
+  * "layer" parameter can be used in the battleLabels
+
+  [INSTALLER]
+  * improvements in WoT client path detection
+  
+  [HANGAR]
+  * clock in the hangar is moved to widgets
+  * removed config file "clock.xc" and references
+  * removed userInfo/sortColumn option, build in since 0.9.18
+
+  [MARKERS]
+  * added "stunMarker" settings for stun marker
+
+  [CAROUSEL]
+  * added settings "fields"/"infoImg"
+  * parameters "textFormat" and "shadow" added in the text fields settings in section "fields"
+
+XVM-6.5.7:
+  [GENERAL]
+  * adaptation to 23.03.2017 micropatch
+
+  [CAROUSEL]
+  * rename options: "damageAvgPerMinute" -> "avgDamagePerMinute", "damageAvg" -> "avgDamage"
+  * fixed tooltips
+
+  [MINIMAP]
+  * changed "artillery" circle behavior:
+      circle radius consider vertical gun constraints
+
+  [HANGAR]
+  * added options hangar/pingServers/bgImage and hangar/onlineServers/bgImage
+
+XVM-6.5.6:
+  [XFW]
+  * python console shortcut was changed to Ctrl+Alt+~
+
+  [HANGAR]
+  * fixed hangar loading after battle
+  * fixed critical hits counter in the battle results window
+  * fixed premium XP counter in the battle results window
+  * fixed win chances in the battle results window
+
+  [PYTHON MACROSES]
+  * added the macro {{py:xvm.dynamic_color_rating(rating, value)}}
+  * totalEfficiency: fixed macroses {{py:xvm.crits}} and {{py:xvm.detection}}
+  * repairTime: fixed timers stuck on switching in observer mode
+  * damageLog: fixed option "moveInBattle"
+  * damageLog: fixed macros usage in the "x" and "y" parameters
+
+XVM-6.5.5:
   [GENERAL]
   * adaptation to WoT 0.9.17.1
   * enable DPI-Aware mode for high pixel density displays for Microsoft Windows Vista or later
@@ -44,9 +119,8 @@
   * allow formatting for recursive macros like `{{{{py:random.randint()}}==0?zero|one}}`
   
   [PYTHON MACROSES]
-  * Added xvm.utils.smooth_transition_color() function
-  * Added the macro {{py:xvm.dynamic_color_rating(rating, value)}}
-  * Added list of available macroses with their description (/res_mods/mods/shared_resources/xvm/docs/py_macros.txt)
+  * added xvm.utils.smooth_transition_color() function
+  * added list of available macroses with their description (/res_mods/mods/shared_resources/xvm/docs/py_macros.txt)
 
 XVM-6.5.4:
   * adaptation to WoT 0.9.17.0.3

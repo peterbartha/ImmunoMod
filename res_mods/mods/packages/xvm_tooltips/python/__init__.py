@@ -5,10 +5,10 @@
 
 XFW_MOD_INFO = {
     # mandatory
-    'VERSION':       '0.9.17.1',
+    'VERSION':       '0.9.18.0',
     'URL':           'http://www.modxvm.com/',
     'UPDATE_URL':    'http://www.modxvm.com/en/download-xvm/',
-    'GAME_VERSIONS': ['0.9.17.1'],
+    'GAME_VERSIONS': ['0.9.18.0'],
     # optional
 }
 
@@ -153,9 +153,6 @@ def SimplifiedStatsBlockConstructor_construct(base, self):
 @overrideMethod(tooltips_vehicle.AdditionalStatsBlockConstructor, 'construct')
 def AdditionalStatsBlockConstructor_construct(base, self):
     if config.get('tooltips/hideBottomText'):
-        lockBlock = self._makeLockBlock()
-        if lockBlock is not None:
-            return [lockBlock]
         return []
     else:
         return base(self)
@@ -226,7 +223,7 @@ def CommonStatsBlockConstructor_construct(base, self):
         gun = vehicle.gun.descriptor
         turret = vehicle.turret.descriptor
         comparator = idealCrewComparator_helper(vehicle)
-        vehicleCommonParams = dict(getParameters_helper(vehicle))
+        vehicleCommonParams = getParameters_helper(vehicle)
         veh_type_inconfig = vehicle.type.replace('AT-SPG', 'TD')
         clipGunInfoShown = False
         premium_shells = {}
@@ -383,7 +380,7 @@ def CommonStatsBlockConstructor_construct(base, self):
                     customtext = paramName[5:]
                     tooltip_add_param(self, result, l10n(customtext), '')
                 elif paramInfo is not None and paramName in paramInfo.name:
-                    valueStr = str(param_formatter.baseFormatParameter(paramName, paramInfo.value))
+                    valueStr = str(param_formatter.formatParameter(paramName, paramInfo.value))
                     tooltip_add_param(self, result, getParameterValue(paramName), valueStr)
         if vehicle.isInInventory:
             # optional devices icons, must be in the end
@@ -423,8 +420,10 @@ def CommonStatsBlockConstructor_construct(base, self):
                 crewRolesIcons_arr.append('<img src="%s/%s.png" height="16" width="16">' % (imgPath, tankman_role[0]))
             crewRolesIcons_str = ''.join(crewRolesIcons_arr)
             tooltip_add_param(self, result, crewRolesIcons_str, '')
-        if len(result) > 31: # limitation
-            result = result[:31]
+        if (len(result) > 30) and config.get('tooltips/hideBottomText'): # limitation
+            result = result[:30]
+        elif (len(result) > 29) and not config.get('tooltips/hideBottomText'): # limitation
+            result = result[:29]
         carousel_tooltips_cache[vehicle.intCD] = result
         return result
     except Exception as ex:

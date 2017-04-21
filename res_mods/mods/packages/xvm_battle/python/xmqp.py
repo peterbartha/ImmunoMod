@@ -172,17 +172,21 @@ class _XMQP(object):
             err(traceback.format_exc())
 
     def call(self, data):
-        if self.is_consuming:
-            #self._correlation_id = str(uuid.uuid4())
-            message = simplejson.dumps({'accountDBID': utils.getAccountDBID(), 'data': data})
-            debug('[XMQP] call: %s' % utils.hide_guid(message))
-            self._channel.basic_publish(
-                exchange=self._exchange_name,
-                routing_key='',
-                #properties=pika.BasicProperties(
-                #    reply_to=self._queue_name,
-                #    correlation_id=self._correlation_id),
-                body=message)
+        if self.is_consuming and self._exchange_name is not None:
+            try:
+                #self._correlation_id = str(uuid.uuid4())
+                message = simplejson.dumps({'accountDBID': utils.getAccountDBID(), 'data': data})
+                debug('[XMQP] call: %s' % utils.hide_guid(message))
+                self._channel.basic_publish(
+                    exchange=self._exchange_name,
+                    routing_key='',
+                    #properties=pika.BasicProperties(
+                    #    reply_to=self._queue_name,
+                    #    correlation_id=self._correlation_id),
+                    body=message)
+            except Exception as ex:
+                err('_exchange_name=' + str(self._exchange_name))
+                err(traceback.format_exc())
 
     # INTERNAL
 

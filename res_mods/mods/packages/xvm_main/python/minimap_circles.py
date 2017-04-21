@@ -165,7 +165,11 @@ class _MinimapCircles(object):
         for shell in descr.gun['shots']:
             shell_range = max(shell_range, shell['maxDistance'])
             if isArty:
-                artillery_range = max(artillery_range, round(math.pow(shell['speed'], 2) / shell['gravity']))
+                pitchLimits = abs(descr.gun['pitchLimits']['absolute'][0])
+                if pitchLimits >= (math.pi / 4):
+                    artillery_range = max(artillery_range, round(math.pow(shell['speed'], 2) / shell['gravity']))
+                else:
+                    artillery_range = max(artillery_range, round(math.sin(2 * pitchLimits) * math.pow(shell['speed'], 2) / shell['gravity']))
 
         # do not show for range more then 707m (maximum marker visibility range)
         if shell_range >= 707:
@@ -194,7 +198,7 @@ class _MinimapCircles(object):
             'view_camouflage': self.camouflage,
             'artillery_range': artillery_range,
             'shell_range': shell_range,
-            'base_gun_reload_time': descr.gun['reloadTime'],
+            'base_gun_reload_time': float("{0:.3f}".format(descr.gun['reloadTime'])),
             'base_radio_distance': descr.radio['distance'],
             'commander_sixthSense': self.commander_sixthSense,
         }

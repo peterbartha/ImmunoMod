@@ -14,7 +14,7 @@
 	|| {colorXEFF}              ||  || Color depending on XVM Scale for efficiency                                          ||
     || {colorCOEF}              ||  || Dynamic color performance for battle damage on the current tank for COEF             ||
 	|| {colorDIFF}              ||  || Dynamic color moderate damage on the server for the current battle tank for DIFF     ||
-	|| {colorAVGDAMAGE}         ||  || Dynamic color according to the average damage                                        ||
+	|| {colorAVGDMG}            ||  || Dynamic color according to the average damage                                        ||
 	|| {WN8}                    ||  || WN8 rating                                                                           ||
 	|| {EFF}                    ||  || Player efficiency                                                                    ||
 	|| {XWN8}                   ||  || XVM Scale for WN8 (values 00-99, XX for Tops)                                        ||
@@ -22,9 +22,9 @@
     || {COEF}                   ||  || The effectiveness of the battle damage on the current tank                           ||
     || {DIFF}                   ||  || Average damage caused by the server that you need to apply                           ||
     || {AVGSHOTS}               ||  || Average damage caused for your number of shots                                       ||
-    || {AVGDAMAGE}              ||	|| Average damage during the battle	                                                    ||
-	|| {DAMAGE}                 ||  || The total damage caused                                                              ||
-	|| {LASTDAMAGE}             ||  || The damage of last shot                                                              ||
+    || {AVGDMG}                 ||	|| Average damage during the battle	                                                    ||
+	|| {DMG}                    ||  || The total damage caused                                                              ||
+	|| {LASTDMG}                ||  || The damage of last shot                                                              ||
 	|| {MAINGUN}                ||  || High Caliber                                                                         ||
 	--------------------------------------------------------------------------------------------------------------------------
 */

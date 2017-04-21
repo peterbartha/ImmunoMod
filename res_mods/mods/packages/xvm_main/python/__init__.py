@@ -5,10 +5,10 @@
 
 XFW_MOD_INFO = {
     # mandatory
-    'VERSION':       '0.9.17.1',
+    'VERSION':       '0.9.18.0',
     'URL':           'http://www.modxvm.com/',
     'UPDATE_URL':    'http://www.modxvm.com/en/download-xvm/',
-    'GAME_VERSIONS': ['0.9.17.1'],
+    'GAME_VERSIONS': ['0.9.18.0'],
     # optional
 }
 
@@ -158,7 +158,7 @@ def _PlayerAvatar_onBecomeNonPlayer(base, self):
 #####################################################################
 # Log version info + warn about installed XVM fonts
 
-log("XVM: eXtended Visualisation Mod ( %s )" % XFW_MOD_INFO['URL'])
+log("XVM: eXtended Visualization Mod ( %s )" % XFW_MOD_INFO['URL'])
 
 try:
     from __version__ import __branch__, __revision__, __node__
