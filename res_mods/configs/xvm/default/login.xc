@@ -205,9 +205,6 @@
         "blur": 4,
         "strength": 2
       }
-    },
-    // Parameters for widgets
-    // Параметры виджетов
-    "widgets": ${"widgets.xc":"widgets.login"}
+    }
   }
 }

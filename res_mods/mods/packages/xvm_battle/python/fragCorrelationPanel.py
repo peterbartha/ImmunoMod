@@ -144,7 +144,7 @@ def _FragCorrelationPanel_getTotalStats(base, self, arenaDP):
             return {}
     except Exception, ex:
         err(traceback.format_exc())
-    base(self, arenaDP)
+    base(self)
 
 @registerEvent(Vehicle, 'onHealthChanged')
 def onHealthChanged(self, newHealth, attackerID, attackReasonID):

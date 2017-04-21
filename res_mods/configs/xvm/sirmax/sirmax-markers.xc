@@ -52,9 +52,6 @@
         "actionMarker": {
           "y": -55
         },
-        "stunMarker": {
-          "y": -60
-        },
         "textFields": [
           {
             "enabled": true,
@@ -110,9 +107,6 @@
         "actionMarker": {
           "y": -55
         },
-        "stunMarker": {
-          "y": -60
-        },
         "clanIcon": {
           "enabled": true,
           "x": 0,
@@ -159,9 +153,6 @@
         "damageTextSquadman": ${"ally.dead.normal.damageText"},
         "actionMarker": {
           "y": -55
-        },
-        "stunMarker": {
-          "y": -60
         }
       },
       "extended": {
@@ -178,9 +169,6 @@
         "damageTextSquadman": ${"ally.dead.extended.damageText"},
         "actionMarker": {
           "y": -55
-        },
-        "stunMarker": {
-          "y": -60
         },
         "textFields": [
           {
@@ -233,9 +221,6 @@
         "damageTextSquadman": ${"enemy.alive.normal.damageText"},
         "actionMarker": {
           "y": -55
-        },
-        "stunMarker": {
-          "y": -60
         },
         "textFields": [
           {
@@ -292,9 +277,6 @@
         "actionMarker": {
           "y": -55
         },
-        "stunMarker": {
-          "y": -60
-        },
         "clanIcon": {
           "enabled": true,
           "x": 0,
@@ -340,9 +322,6 @@
         "damageTextSquadman": ${"enemy.dead.normal.damageText"},
         "actionMarker": {
           "y": -55
-        },
-        "stunMarker": {
-          "y": -60
         }
       },
       "extended": {
@@ -359,9 +338,6 @@
         "damageTextSquadman": ${"enemy.dead.extended.damageText"},
         "actionMarker": {
           "y": -55
-        },
-        "stunMarker": {
-          "y": -60
         },
         "textFields": [
           {

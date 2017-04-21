@@ -162,8 +162,6 @@ List of possible values: (if the parameter is not relevant for some tank, it wil
 "piercingPowerAvg",                     - Пробитие базовым снарядом (среднее) \ Penetration of basic shell (avg)
 "piercingPowerAvgSummary",              - Сводка пробития всеми снарядами \ Summary of penetration of all shells
 "avgDamage",                            - Средний урон базовым снарядом \ Average damage of basic shell
-"stunMaxDuration",                      - Максимальное время оглушения (c) \ Maximum stun duration (s)
-"stunMinDuration",                      - Минимальное время оглушения (c) \ Minimum stun duration (s)
 "damageAvgSummary",                     - Сводка урона всеми снарядами \ Summary of damages of all shells
 "avgDamagePerMinute",                   - Средний ДПМ базовым снарядом\ Average DPM with basic shell
 "explosionRadius",                      - Радиус разлета осколков фугаса \ Radius of HE explosion splash
@@ -183,8 +181,6 @@ List of possible values: (if the parameter is not relevant for some tank, it wil
 "shootingRadius",                       - Дальность стрельбы арты, пулеметов \ Shooting range of SPG, machine guns
 "turretRotationSpeed",                  - Скорость вращения башни (и оружия) \ Rotation speed of turret (and gun)
 "terrainResistance",                    - Сводка сопротивлений грунтов \ Summary of terrain resistances
-"switchOnTime",                         - Время перехода в осадный режим \ Siege mode activation time
-"switchOffTime",                        - Время перехода в походный режим \ Marching mode activation time
 "optDevicesIcons",                      - Значки дополнительного оборудования (будут показаны в конце) \ Icons of optional devices (will be shown at the end)
 "equipmentIcons",                       - Значки снаряжения (будут показаны в конце) \ Icons of equipment (will be shown at the end)
 "crewRolesIcons",                       - Значки профессий экипажа танка (будут показаны в конце) \ Icons of crew roles of vehicle (will be shown at the end)
