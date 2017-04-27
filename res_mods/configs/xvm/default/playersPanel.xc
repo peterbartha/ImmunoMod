@@ -21,7 +21,7 @@
       // Horizontal alignment
       // Выравнивание по горизонтали
       "align": "center",
-      // true - x position is binded to vehicle icon, false - binded to edge of the screen.
+      // true - x position is bound to vehicle icon, false - bound to edge of the screen.
       // true - положение по горизонтали отсчитывается от иконки танка, false - от края экрана.
       "bindToIcon": true,
       // enemy spotted status marker format.
@@ -96,7 +96,7 @@
     "removeSelectedBackground": false,
     // true - Remove the Players Panel mode switcher (buttons for changing size).
     // true - убрать переключатель режимов ушей мышкой.
-    "removePanelsModeSwitcher": false,
+    "removePanelsModeSwitcher": true,
     // Start panels mode. Possible values: "none", "short", "medium", "medium2", "large".
     // Начальный режим ушей. Возможные значения: "none", "short", "medium", "medium2", "large".
     "startMode": "large",

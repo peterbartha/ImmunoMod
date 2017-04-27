@@ -1,0 +1,263 @@
+{
+    "showStatForBattle": true,
+    "battleStatPatterns": [
+        {
+            "pattern": "<img src='img://gui/maps/icons/library/KopiBDW/DoubleStar.png' width='16' height='16' align='baseline' vspace='-4'/><font color='#fdd7a5'>x(\\d)</font>",
+            "repl": "x\\1"
+        },
+        {
+            "pattern": " az első győzelemért minden nap",
+            "repl": ""
+        }
+    ],
+    "battleStatText": [
+        "<textformat tabstops='[15,75]'><font size='7'>\n\n</font>",
+        "{{crewXP}}",
+        "{{autoRepairGBM}}",
+        "{{autoLoadGBM}}",
+        "{{autoEquipGBM}}",
+        "{{totalBattleGBM}}</textformat>"
+    ],
+    "hideMessagePatterns": [
+        "кодировка UTF8",
+        "successfully trained",
+        "successfully transferred",
+        "sent to the Barracks",
+        "You have not changed your password .*",
+        "The consumables on",
+        "The ammunition on",
+        "repaired successfully"
+    ],
+    "overwriteBattleResultBgIcon": false,
+    "bgIconDefeat": "img://gui/maps/icons/library/BgBattleResultIconDefeat-1.png",
+    "bgIconDraw": "img://gui/maps/icons/library/BgBattleResultIconDraw-1.png",
+    "bgIconWin": "img://gui/maps/icons/library/BgBattleResultIconVictory-1.png",
+    "debugBattleResultMessage": false,
+    "showPopUp": true,
+    "thousandSeparator": " ",
+    "ignoreBattleType": [0, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+    "onlineReloadConfig": false,
+    "clientReloadReset": false,
+    "showResetButton": true,
+    "textResetButton": "Nullázás",
+    "dailyAutoReset": true,
+    "dailyAutoResetHour": 7,
+    "enableBattleEndedMessage": true,
+    "battleEndedMessageDefeat": "<img src='img://gui/maps/icons/library/KopiBDW/splitdefeat.png' width='283' height='1' align='baseline' vspace='0'>\n<img src='img://gui/maps/icons/library/BattleResultIcon-1.png' width='16' height='16' align='baseline' vspace='-1'> <font color='#E05A5A'>Vereség!</font> <img src='img://gui/maps/icons/library/BattleResultIcon-1.png' width='16' height='16' align='baseline' vspace='-1'> <font color='#FFDA24'>{{map}}</font>\n<textformat tabstops='[80, 140]'><img src='img://gui/maps/icons/library/KopiBDW/Tanks/{{vehicle-long}}.png' width='53' height='16' align='baseline' vspace='-3'> <font color='#D6EB88'>{{vehicle-long}}</font><tab><img src='img://gui/maps/icons/library/XpIcon-1.png' width='16' height='16' align='baseline' vspace='-3'><font color='#A0CFFF'><b>{{xp}}</b></font><tab><img src='img://gui/maps/icons/library/CreditsIcon-2.png' width='16' height='16' align='baseline' vspace='-4'><font color='{{c:color}}'><b>{{credits}}</b></font></textformat>\n<img src='img://gui/maps/icons/library/KopiBDW/splitdefeat.png' width='283' height='1' align='baseline' vspace='0'>",
+    "battleEndedMessageDraw": "<img src='img://gui/maps/icons/library/KopiBDW/splitdraw.png' width='283' height='1' align='baseline' vspace='0'>\n<img src='img://gui/maps/icons/library/attentionIconFilled.png' width='16' height='16' align='baseline' vspace='-1'> <font color='#D37516'>Döntetlen!</font> <img src='img://gui/maps/icons/library/attentionIconFilled.png' width='16' height='16' align='baseline' vspace='-1'> <font color='#FFDA24'>{{map}}</font>\n<textformat tabstops='[80, 140]'><img src='img://gui/maps/icons/library/KopiBDW/Tanks/{{vehicle-long}}.png' width='53' height='16' align='baseline' vspace='-3'> <font color='#D6EB88'>{{vehicle-long}}</font><tab><img src='img://gui/maps/icons/library/XpIcon-1.png' width='16' height='16' align='baseline' vspace='-3'><font color='#A0CFFF'><b>{{xp}}</b></font><tab><img src='img://gui/maps/icons/library/CreditsIcon-2.png' width='16' height='16' align='baseline' vspace='-4'><font color='{{c:color}}'><b>{{credits}}</b></font></textformat>\n<img src='img://gui/maps/icons/library/KopiBDW/splitdraw.png' width='283' height='1' align='baseline' vspace='0'>",
+    "battleEndedMessageWin": "<img src='img://gui/maps/icons/library/KopiBDW/splitwin.png' width='283' height='1' align='baseline' vspace='0'>\n<img src='img://gui/maps/icons/library/TournamentBattleResultIcon-1.png' width='16' height='16' align='baseline' vspace='-1'> <font color='#82BC45'>Győzelem!</font> <img src='img://gui/maps/icons/library/TournamentBattleResultIcon-1.png' width='16' height='16' align='baseline' vspace='-1'> <font color='#FFDA24'>{{map}}</font>\n<textformat tabstops='[80, 140]'><img src='img://gui/maps/icons/library/KopiBDW/Tanks/{{vehicle-long}}.png' width='53' height='16' align='baseline' vspace='-3'> <font color='#D6EB88'>{{vehicle-long}}</font><tab><img src='img://gui/maps/icons/library/XpIcon-1.png' width='16' height='16' align='baseline' vspace='-3'><font color='#A0CFFF'><b>{{xp}}</b></font><tab><img src='img://gui/maps/icons/library/CreditsIcon-2.png' width='16' height='16' align='baseline' vspace='-4'><font color='{{c:color}}'><b>{{credits}}</b></font></textformat>\n<img src='img://gui/maps/icons/library/KopiBDW/splitwin.png' width='283' height='1' align='baseline' vspace='0'>",
+    "statBackground": "img://gui/maps/icons/library/KopiBDW/BG/BG_stats{{c:WN8}}.png",
+    "icon": "",
+    "showStatByTank": true,
+    "textGeneralPageButton": "Tank Stat",
+    "textByTankPageButton": "Általános Stat",
+    "byTankTitle": "<font size='12' color='#FFCC66'><textformat leading='-4' tabstops='[94,135,190]'>         Тank<tab>Győz.<tab>Átl. sebz.<tab>WN8</textformat></font><font size='1'>\n</font>{{Line2.png}}",
+    "byTankRow": "<font color='#929292' size='12'><textformat leading='-4' tabstops='[92,133,180]'><font size='0'> <img src='img://gui/maps/icons/library/KopiBDW/TankIcons/{{vehicle-long}}.png' width='25' height='16' align='baseline' vspace='-18'></font><font color='#FFE6B3'>{{vehicle-short}}<tab><b><font face='Consolas' color='{{g:avgWinRate}}'>{{winsCount:2}}</font>/<font face='Consolas' color='{{g:avgWinRate}}'>{{battlesCount}}</font><tab><font face='Consolas' color='#FFFFFF'>{{avgDamage:6}}</font><tab><font face='Consolas' color='{{g:WN8}}'>{{WN8:6}}</font></b></textformat>",
+    "sortReverse": true,
+    "sortMacro": "WN8",
+    "template": [
+        "<font size='14' color='#AE6E2D'><textformat tabstops='[90,110,165]'>Pénzügyek:</font>",
+        "{{Line.png}}",
+        "<font size='12' color='#CDC673'>Bruttó:<tab>{{CreditsIcon.png}}<tab><font color='#FFFFFF'>{{grossCredits}}</font></font>",
+        "<font size='12' color='#CDC673'>Javítások:<tab>{{CreditsIcon.png}}<tab><font color='#FFFFFF'>{{service}}</font></font>",
+        "<font size='12' color='#CDC673'><b>Nettó:<tab>{{CreditsIcon.png}}<tab><font color='{{c:netCredits}}'>{{netCredits}}</font></font></b>\n",
+        "<font size='14' color='#AE6E2D'>Napi statisztika:</font>",
+        "{{Line.png}}",
+        "<font size='12' color='#FF6655'>Győzelem/Csaták:<tab>{{TournamentBattleResultIcon.png}}<tab><b><font color='{{g:avgWinRate}}'>{{winsCount}}</font> (<font color='#FFFFFF'>{{battlesCount}}</font>)<tab>(<font color='{{g:avgWinRate}}'>{{avgWinRate:1f}}%</font>)</font></b>",
+        "<font size='12' color='#FCFCFC'>Átlagos szint:<tab>{{Tier.png}}<tab><b><font color='#FCFCFC'>{{avgTier:1f}}</font><tab>(<font color='#FCFCFC'>{{avgBattleTier:1f}}</font>)</font></b>",
+        "<font size='12' color='#3EB5F1'>Alap XP:<tab>{{XpIcon.png}}<tab><b><font color='#FCFCFC'>{{totalOriginPremXP}}</font><tab>(<font color='#FCFCFC'>{{avgOriginalPremXP}}</font>)</font></b>",
+        "<font size='12' color='#3EB5F1'>Összes XP<tab>{{DoubleStar.png}}<tab><b><font color='#FCFCFC'>{{totalXP}}</font><tab>(<font color='#FCFCFC'>{{avgXP}}</font>)</font></b>",
+        "<font size='12' color='#3EB5F1'>Szabad XP:<tab>{{FreeXpIcon.png}}<tab><b><font color='#CD853F'>{{totalFreeXP}}</font></font></b>\n",
+        "<font size='12' color='#FCFCFC'>Kilőtt Tank:<tab><b>{{Kills.png}}<tab><font color='#FFFFFF'>{{totalFrag}}</font></b><tab><b>(<font color='#FFFFFF'>{{avgFrag:1f}}</font>)</font></b>",
+        "<font size='12' color='#FCFCFC'>Halál:<tab>{{Skull.png}}<tab><b><font color='#FFFFFF'>{{totalDeathsCount}}</font></b><tab><b>(<font color='#FFFFFF'>{{deathsRate:1f}}%</font>)</font></b>",
+        "<font size='12' color='#FCFCFC'>Találat/Lövés:<tab>{{Support.png}}<tab><b><font color='#FFFFFF'>{{totalHits}}</font> / <font color='#FFFFFF'>{{totalShots}}</font></b><tab><b>(<font color='{{g:hitsRate}}'>{{hitsRate:1f}}%</font>)</font></b>",
+        "<font size='12' color='#FCFCFC'>Átütés:<tab>{{Penetration.png}}<tab><b><font color='#FFFFFF'>{{totalPierced}}</font></b><tab><b>(<font color='{{g:effHitsRate}}'>{{effHitsRate:1f}}%</font>)</font></b>",
+        "<font size='12' color='#FCFCFC'>Kiosztott sebzés:<tab>{{Damage1.png}}<tab><b><font color='#FFFFFF'>{{totalDmg}}</font><tab>(<font color='#FFFFFF'>{{avgDamage}}</font>)</font></b>",
+        "<font size='12' color='#FCFCFC'>Kapott sebzés:<tab>{{Damage2.png}}<tab><b><font color='#FFFFFF'>{{totalDmgRec}}</font><tab>(<font color='#FFFFFF'>{{avgDamageRec}}</font>)</font></b>",
+        "<font size='12' color='#FCFCFC'>Felderítés:<tab>{{Binoculars.png}}<tab><b><font color='#FFFFFF'>{{totalSpot}}</font><tab>(<font color='#FFFFFF'>{{avgSpot:1f}}</font>)</font></b>",
+        "<font size='12' color='#FCFCFC'>Védés:<tab>{{ClanBattleResultIcon.png}}<tab><b><font color='#FFFFFF'>{{totalDef}}</font><tab>(<font color='#FFFFFF'>{{avgDef:1f}}</font>)</font></b>",
+        "<font size='12' color='#FCFCFC'>Foglalás:<tab>{{BattleResultIcon.png}}<tab><b><font color='#FFFFFF'>{{totalCap}}</font><tab>(<font color='#FFFFFF'>{{avgCap:1f}}</font>)</font></b>\n",
+        "<font size='12' color='#FFFFFF'>Hatékonyság/WN8:<tab><b><font color='{{g:EFF}}'>{{EFF}}</font> (<font color='{{g:EFF}}'>{{XEFF}}</font>)</b><tab><tab><b><font color='{{g:WN8}}'>{{WN8}}</font> (<font color='{{g:WN8}}'>{{XWN8}}</font>)</b></font></textformat>"
+    ],
+    "userMacros": {
+        "crewXP": "<tab><img src='img://gui/maps/icons/library/KopiBDW/Crew.png' width='20' height='20' align='baseline' vspace='-4'> <font size='12' color='#CDC673'>Legénységi XP: </font><font size='12' color='#FCFCFC'><b>{{totalTmenXP}}</b></font> <img src='img://gui/maps/icons/library/KopiBDW/XpIconBig.png' width='12' height='12' align='baseline' vspace='-3'>\n",
+        "autoRepairGBM": "<tab><img src='img://gui/maps/icons/library/KopiBDW/Wrench.png' width='20' height='20' align='baseline' vspace='-14'> <font size='12' color='#CDC673'>Javítás: </font><font size='12' color='#FFFFFF'><b>{{autoRepairCost}}</b></font> <img src='img://gui/maps/icons/library/KopiBDW/CreditsIconBig.png' width='9' height='9' align='baseline' vspace='0'>\n",
+        "autoLoadGBM": "<tab><img src='img://gui/maps/icons/library/KopiBDW/Shell.png' width='20' height='20' align='baseline' vspace='-14'> <font size='12' color='#CDC673'>Lőszer: </font><font size='12' color='#FFFFFF'><b>{{autoLoadCost}}</b></font> <img src='img://gui/maps/icons/library/KopiBDW/CreditsIconBig.png' width='9' height='9' align='baseline' vspace='0'>\n",
+        "autoEquipGBM": "<tab><img src='img://gui/maps/icons/library/KopiBDW/Toolbox.png' width='20' height='20' align='baseline' vspace='-14'> <font size='12' color='#CDC673'>Fogyóeszköz: </font><font size='12' color='#FFFFFF'><b>{{autoEquipCost}}</b></font> <img src='img://gui/maps/icons/library/KopiBDW/CreditsIconBig.png' width='9' height='9' align='baseline' vspace='0'>\n",
+        "autoRepair": "<font size='12' color='#CDC673'>Javítás:</font><tab><font size='12' color='#FFFFFF'>-{{autoRepairCost}}</font> <img src='img://gui/maps/icons/library/KopiBDW/CreditsIcon.png' width='16' height='16' align='baseline' vspace='-4'>\n",
+        "autoLoad": "<font size='12' color='#CDC673'>Lőszer:</font><tab><font size='12' color='#FFFFFF'>-{{autoLoadCost}}</font> <img src='img://gui/maps/icons/library/KopiBDW/CreditsIcon.png' width='16' height='16' align='baseline' vspace='-4'>\n",
+        "dailyXP": "<font size='12' color='#929292'>(<img src='img://gui/maps/icons/library/KopiBDW/DoubleStar.png' width='16' height='16' align='baseline' vspace='-4'><font color='#FDD7A5'>x{{dailyXPFactor}}</font>)</font>",
+        "autoEquip": "<font size='12' color='#CDC673'>Fogyóeszköz:</font><tab><font size='12' color='#FFFFFF'>-{{autoEquipCost}}</font> <img src='img://gui/maps/icons/library/KopiBDW/CreditsIcon.png' width='16' height='16' align='baseline' vspace='-4'>\n",
+        "totalBattle": "<font size='12' color='#CDC673'><b>Összes:<tab><font size='12' color='{{c:netCredits}}'>{{netCredits}}</font> <img src='img://gui/maps/icons/library/KopiBDW/CreditsIcon.png' width='16' height='16' align='baseline' vspace='-4'><tab>WN8: <font size='12' color='{{g:WN8}}'>{{WN8}} <font size='12' color='#929292'>(</font><font size='12' color='{{g:WN8}}'>{{XWN8}}</font><font size='12' color='#929292'>)</font></b></font>",
+        "totalBattleGBM": "<font size='10'>\n</font><font size='12' color='#CDC673'><b>Összes: <font size='12' color='{{c:netCredits}}'>{{netCredits}}</b></font> <img src='img://gui/maps/icons/library/KopiBDW/CreditsIconBig.png' width='11' height='11' align='baseline' vspace='-1'><font size='12' color='#CDC673'><b>   WN8:</font> <font size='12' color='{{g:WN8}}'>{{WN8}}</font> <font color='#929292'>(<font color='{{g:WN8}}'>{{XWN8}}</font>)   <img src='img://gui/maps/icons/library/KopiBDW/Place/{{c:place}}.png' width='20' height='20' align='baseline' vspace='-10'></b></font>",
+        "Line.png": "<img src='img://gui/maps/icons/library/KopiBDW/Line.png' width='245' height='7' align='baseline' vspace='4'>",
+        "Line2.png": "<img src='img://gui/maps/icons/library/KopiBDW/Line2.png' width='245' height='7' align='baseline' vspace='4'>",
+        "XpIcon.png": "<img src='img://gui/maps/icons/library/KopiBDW/XpIcon.png' width='16' height='16' align='baseline' vspace='-3'>",
+        "GoldIcon.png": "<img src='img://gui/maps/icons/library/KopiBDW/GoldIcon.png' width='16' height='16' align='baseline' vspace='-3'>",
+        "CreditsIcon.png": "<img src='img://gui/maps/icons/library/KopiBDW/CreditsIcon.png' width='16' height='16' align='baseline' vspace='-4'>",
+        "FreeXpIcon.png": "<img src='img://gui/maps/icons/library/KopiBDW/FreeXpIcon.png' width='16' height='16' align='baseline' vspace='-3'>",
+        "DoubleStar.png": "<img src='img://gui/maps/icons/library/KopiBDW/DoubleStar.png' width='16' height='16' align='baseline' vspace='-3'>",
+        "ClanBattleResultIcon.png": "<img src='img://gui/maps/icons/library/KopiBDW/ClanBattleResultIcon.png' width='12' height='12' align='baseline' vspace='-3'>",
+        "BattleResultIcon.png": "<img src='img://gui/maps/icons/library/KopiBDW/BattleResultIcon.png' width='12' height='12' align='baseline' vspace='-3'>",
+        "Reloading.png": "<img src='img://gui/maps/icons/library/KopiBDW/Reloading.png' width='12' height='12' align='baseline' vspace='-4'>",
+        "Support.png": "<img src='img://gui/maps/icons/library/KopiBDW/Support.png' width='12' height='12' align='baseline' vspace='-4'>",
+        "Skull.png": "<img src='img://gui/maps/icons/library/KopiBDW/Skull.png' width='12' height='12' align='baseline' vspace='-4'>",
+        "Penetration.png": "<img src='img://gui/maps/icons/library/KopiBDW/Penetration.png' width='12' height='12' align='baseline' vspace='-4'>",
+        "Damage1.png": "<img src='img://gui/maps/icons/library/KopiBDW/Damage1.png' width='12' height='12' align='baseline' vspace='-3'>",
+        "Damage2.png": "<img src='img://gui/maps/icons/library/KopiBDW/Damage2.png' width='12' height='12' align='baseline' vspace='-4'>",
+        "Binoculars.png": "<img src='img://gui/maps/icons/library/KopiBDW/Binoculars.png' width='12' height='12' align='baseline' vspace='-4'>",
+        "Kills.png": "<img src='img://gui/maps/icons/library/KopiBDW/Kills.png' width='16' height='16' align='baseline' vspace='-5'>",
+        "Tank.png": "<img src='img://gui/maps/icons/library/KopiBDW/Tanks/{{vehicle-long}}.png' width='40' height='12' align='baseline' vspace='-3'>",
+        "TankBig.png": "<img src='img://gui/maps/icons/vehicle/{{vehicle-raw}}.png' width='48' height='30' align='baseline' vspace='-24'>",
+        "Victory.png": "<img src='img://gui/maps/icons/library/KopiBDW/Victory.png' width='200' height='45' align='baseline' vspace='-0'>",
+        "Draw.png": "<img src='img://gui/maps/icons/library/KopiBDW/Draw.png' width='200' height='45' align='baseline' vspace='-0'>",
+        "Defeat.png": "<img src='img://gui/maps/icons/library/KopiBDW/Defeat.png' width='200' height='45' align='baseline' vspace='-0'>",
+        "TournamentBattleResultIcon.png": "<img src='img://gui/maps/icons/library/KopiBDW/TournamentBattleResultIcon.png' width='12' height='12' align='baseline' vspace='-3'>",
+        "IndustrialResource.png": "<img src='img://gui/maps/icons/library/KopiBDW/Resources.png' width='16' height='16' align='baseline' vspace='-3'>",
+        "Tier.png": "<img src='img://gui/maps/icons/library/KopiBDW/Tank.png' width='16' height='16' align='baseline' vspace='-9'>"
+        },
+    "gradient": {
+        "EFF": [
+            {"value": 0,     "color": "#FE0E00"},
+            {"value": 610,   "color": "#FE7903"},
+            {"value": 875,   "color": "#F8F400"},
+            {"value": 1175,  "color": "#60FF00"},
+            {"value": 1540,  "color": "#02C9B3"},
+            {"value": 1880,  "color": "#D042F3"}
+        ],
+        "WN6": [
+            {"value": 0,     "color": "#FE0E00"},
+            {"value": 470,   "color": "#FE7903"},
+            {"value": 860,   "color": "#F8F400"},
+            {"value": 1225,  "color": "#60FF00"},
+            {"value": 1635,  "color": "#02C9B3"},
+            {"value": 1990,  "color": "#D042F3"}
+        ],
+        "WN7": [
+            {"value": 0,     "color": "#FE0E00"},
+            {"value": 505,   "color": "#FE7903"},
+            {"value": 865,   "color": "#F8F400"},
+            {"value": 1225,  "color": "#60FF00"},
+            {"value": 1635,  "color": "#02C9B3"},
+            {"value": 1995,  "color": "#D042F3"}
+        ],
+        "WN8": [
+            {"value": 0,     "color": "#930D0D"},
+            {"value": 300,   "color": "#F11919"},
+            {"value": 450,   "color": "#FF8A00"},
+            {"value": 650,   "color": "#E6DF27"},
+            {"value": 900,   "color": "#77E812"},
+            {"value": 1200,  "color": "#459300"},
+            {"value": 1600,  "color": "#2AE4FF"},
+            {"value": 2000,  "color": "#00A0B8"},
+            {"value": 2450,  "color": "#C64CFF"},
+            {"value": 2900,  "color": "#8225AD"}
+        ],
+        "rDAMAGE": [
+            {"value": 0.34,  "color": "#FE0E00"},
+            {"value": 0.57,  "color": "#FE7903"},
+            {"value": 0.81,  "color": "#F8F400"},
+            {"value": 1.03,  "color": "#60FF00"},
+            {"value": 1.22,  "color": "#02C9B3"},
+            {"value": 1.57,  "color": "#D042F3"}
+        ],
+        "rFRAG": [
+            {"value": 0.34,  "color": "#FE0E00"},
+            {"value": 0.57,  "color": "#FE7903"},
+            {"value": 0.81,  "color": "#F8F400"},
+            {"value": 1.03,  "color": "#60FF00"},
+            {"value": 1.22,  "color": "#02C9B3"},
+            {"value": 1.57,  "color": "#D042F3"}
+        ],
+        "rSPOT": [
+            {"value": 0.34,  "color": "#FE0E00"},
+            {"value": 0.57,  "color": "#FE7903"},
+            {"value": 0.81,  "color": "#F8F400"},
+            {"value": 1.03,  "color": "#60FF00"},
+            {"value": 1.22,  "color": "#02C9B3"},
+            {"value": 1.57,  "color": "#D042F3"}
+        ],
+        "rDEF": [
+            {"value": 0.34,  "color": "#FE0E00"},
+            {"value": 0.57,  "color": "#FE7903"},
+            {"value": 0.81,  "color": "#F8F400"},
+            {"value": 1.03,  "color": "#60FF00"},
+            {"value": 1.22,  "color": "#02C9B3"},
+            {"value": 1.57,  "color": "#D042F3"}
+        ],
+        "avgPlace": [
+            {"value": 1,     "color": "#D042F3"},
+            {"value": 3,     "color": "#02C9B3"},
+            {"value": 5,     "color": "#60FF00"},
+            {"value": 7,     "color": "#F8F400"},
+            {"value": 10,    "color": "#FE7903"},
+            {"value": 15,    "color": "#FE0E00"}
+        ],
+        "avgWinRate": [
+            {"value": 45,    "color": "#F02828"},
+            {"value": 50,    "color": "#FFFF00"},
+            {"value": 55,    "color": "#66CC66"}
+        ],
+        "hitsRate": [
+            {"value": 55,    "color": "#F02828"},
+            {"value": 65,    "color": "#FFFF00"},
+            {"value": 75,    "color": "#66CC66"}
+        ],
+        "effHitsRate": [
+            {"value": 60,    "color": "#F02828"},
+            {"value": 70,    "color": "#FFFF00"},
+            {"value": 80,    "color": "#66CC66"}
+        ]
+    },
+    "palette" : {
+        "netCredits": [
+            {"value": -1,    "color": "#FF1010"},
+            {"value": 0,     "color": "#FFFFFF"},
+            {"value": 1,     "color": "#66CC66"}
+        ],
+        "avgWinRate": [
+            {"value": 45,    "color": "#F02828"},
+            {"value": 50,    "color": "#FFFF00"},
+            {"value": 55,    "color": "#66CC66"}
+        ],
+        "WN8": [
+            {"value": 300,   "color": "#930D0D"},
+            {"value": 450,   "color": "#F11919"},
+            {"value": 650,   "color": "#FF8A00"},
+            {"value": 900,   "color": "#E6DF27"},
+            {"value": 1200,  "color": "#77E812"},
+            {"value": 1600,  "color": "#459300"},
+            {"value": 2000,  "color": "#2AE4FF"},
+            {"value": 2450,  "color": "#00A0B8"},
+            {"value": 2900,  "color": "#C64CFF"},
+            {"value": 99999, "color": "#8225AD"}
+        ],
+        "BR": [
+            {"value": 200,   "color": "#5E0000"},
+            {"value": 500,   "color": "#CD3333"},
+            {"value": 700,   "color": "#D7B600"},
+            {"value": 900,   "color": "#6D9521"},
+            {"value": 1100,  "color": "#4C762E"},
+            {"value": 1350,  "color": "#4A92B7"},
+            {"value": 1500,  "color": "#83579D"},
+            {"value": 99999, "color": "#5A3175"}
+        ],
+        "place": [
+            {"value": 1,     "color": "#000001"},
+            {"value": 2,     "color": "#000002"},
+            {"value": 3,     "color": "#000003"},
+            {"value": 4,     "color": "#000004"},
+            {"value": 5,     "color": "#000005"},
+            {"value": 6,     "color": "#000006"},
+            {"value": 7,     "color": "#000007"},
+            {"value": 8,     "color": "#000008"},
+            {"value": 9,     "color": "#000009"},
+            {"value": 10,    "color": "#000010"},
+            {"value": 11,    "color": "#000011"},
+            {"value": 12,    "color": "#000012"},
+            {"value": 13,    "color": "#000013"},
+            {"value": 14,    "color": "#000014"},
+            {"value": 15,    "color": "#000015"}
+        ]
+    }
+}
