@@ -24,6 +24,7 @@ from items import vehicles, _xml
 from xfw import *
 from xvm_main.python.logger import *
 from xvm_main.python.stats import _stat
+from constants import DAMAGE_INFO_CODES
 
 on_fire = 0
 beginFire = None
@@ -61,7 +62,7 @@ MACROS_NAME = ['number', 'critical-hit', 'vehicle', 'name', 'vtype', 'c:costShel
                'level', 'clanicon', 'clannb', 'marksOnGun', 'squad-num', 'dmg-ratio', 'hit-effects', 'c:type-shell',
                'splash-hit', 'team-dmg', 'my-alive', 'gun-caliber', 'wn8', 'xwn8', 'wn6', 'xwn6', 'eff', 'xeff', 'wgr',
                'xwgr', 'xte', 'c:wn8', 'c:xwn8', 'c:wn6', 'c:xwn6', 'c:eff', 'c:xeff', 'c:wgr', 'c:xwgr', 'c:xte',
-               'fire-duration', 'diff-masses', 'nation', 'my-blownup', 'r', 'c:r']
+               'fire-duration', 'diff-masses', 'nation', 'my-blownup', 'r', 'c:r', 'stun-duration', 'crit-device']
 
 RATINGS = {
     'xvm_wgr': {'name': 'xwgr', 'size': 2},
@@ -76,6 +77,34 @@ RATINGS = {
     'basic_xte': {'name': 'xte', 'size': 2}
 }
 
+DEVICES_TANKMAN = {61: 'engine_crit',
+                   62: 'ammo_bay_crit',
+                   63: 'fuel_tank_crit',
+                   64: 'radio_crit',
+                   65: 'left_track_crit',
+                   66: 'right_track_crit',
+                   67: 'gun_crit',
+                   68: 'turret_rotator_crit',
+                   69: 'surveying_device_crit',
+                   70: 'commander',
+                   71: 'driver',
+                   72: 'radioman',
+                   73: 'radioman',
+                   74: 'gunner',
+                   75: 'gunner',
+                   76: 'loader',
+                   77: 'loader',
+                   161: 'engine_destr',
+                   162: 'ammo_bay_destr',
+                   163: 'fuel_tank_destr',
+                   164: 'radio_destr',
+                   165: 'left_track_destr',
+                   166: 'right_track_destr',
+                   167: 'gun_destr',
+                   168: 'turret_rotator_destr',
+                   169: 'surveying_device_destr'
+                   }
+
 SECTION_LOG = 'damageLog/log/'
 SECTION_LOG_ALT = 'damageLog/logAlt/'
 SECTION_LOG_BACKGROUND = 'damageLog/logBackground/'
@@ -83,10 +112,32 @@ SECTION_LOG_ALT_BACKGROUND = 'damageLog/logAltBackground/'
 SECTION_LASTHIT = 'damageLog/lastHit/'
 SECTIONS = (SECTION_LOG, SECTION_LOG_ALT, SECTION_LOG_BACKGROUND, SECTION_LOG_ALT_BACKGROUND, SECTION_LASTHIT)
 
+damageInfoCriticals = ('DEVICE_CRITICAL',
+                       'DEVICE_CRITICAL_AT_SHOT',
+                       'DEVICE_CRITICAL_AT_RAMMING',
+                       'DEVICE_CRITICAL_AT_FIRE',
+                       'DEVICE_CRITICAL_AT_WORLD_COLLISION',
+                       'DEVICE_CRITICAL_AT_DROWNING',
+                       'ENGINE_CRITICAL_AT_UNLIMITED_RPM'
+                       )
+damageInfoDestructions = ('DEVICE_DESTROYED',
+                          'DEVICE_DESTROYED_AT_SHOT',
+                          'DEVICE_DESTROYED_AT_RAMMING',
+                          'DEVICE_DESTROYED_AT_FIRE',
+                          'DEVICE_DESTROYED_AT_WORLD_COLLISION',
+                          'DEVICE_DESTROYED_AT_DROWNING',
+                          'ENGINE_DESTROYED_AT_UNLIMITED_RPM'
+                          )
+damageInfoTANKMAN = ('TANKMAN_HIT',
+                     'TANKMAN_HIT_AT_SHOT',
+                     'TANKMAN_HIT_AT_WORLD_COLLISION',
+                     'TANKMAN_HIT_AT_DROWNING'
+                     )
+
 def keyLower(_dict):
     if _dict is not None:
         dict_return = {}
-        for key in _dict.keys():
+        for key in _dict.iterkeys():
             dict_return[key.lower()] = _dict[key]
         return dict_return
     else:
@@ -107,9 +158,10 @@ def readyConfig(section):
                 'splashHit': keyLower(config.get(section + 'splash-hit')),
                 'criticalHit': keyLower(config.get(section + 'critical-hit')),
                 'hitEffect': keyLower(config.get(section + 'hit-effects')),
-                'c_HitEffect': keyLower(config.get(section + 'c:hit-effects')),
+                'c_hitEffect': keyLower(config.get(section + 'c:hit-effects')),
                 'typeShell': keyLower(config.get(section + 'type-shell')),
-                'c_typeShell': keyLower(config.get(section + 'c:type-shell'))
+                'c_typeShell': keyLower(config.get(section + 'c:type-shell')),
+                'critDevice': keyLower(config.get(section + 'crit-device'))
                 }
     else:
         return damageLogConfig[section]
@@ -277,13 +329,21 @@ class Data(object):
         def isGoldShell(n, s):
             if n != 'icons':
                 xmlCtx = (None, xmlPath + '/' + n)
-                price = _xml.readPrice(xmlCtx, s, 'price')
-                return _xml.readInt(xmlCtx, s, 'id', 0, 65535) if price[1] else None
+                price = 'gold' in _xml.readPrice(xmlCtx, s, 'price')
+                return _xml.readInt(xmlCtx, s, 'id', 0, 65535) if price else None
+
+        def isStunningShell(n, s):
+            if n != 'icons':
+                xmlCtx = (None, xmlPath + '/' + n)
+                stunDuration = _xml.readStringOrNone(xmlCtx, s, 'stunDuration')
+                return _xml.readInt(xmlCtx, s, 'id', 0, 65535) if stunDuration else None
 
         self.initial()
         self.shells = {}
+        self.shells_stunning = {}
         for nation in nations.NAMES:
             xmlPath = '%s%s%s%s' % (ITEM_DEFS_PATH, 'vehicles/', nation, '/components/shells.xml')
+            self.shells_stunning[nation] = [isStunningShell(name, subsection) for name, subsection in ResMgr.openSection(xmlPath).items() if isStunningShell(name, subsection) is not None]
             self.shells[nation] = [isGoldShell(name, subsection) for name, subsection in ResMgr.openSection(xmlPath).items() if isGoldShell(name, subsection) is not None]
         ResMgr.purge(xmlPath, True)
 
@@ -299,7 +359,7 @@ class Data(object):
                      'compName': 'unknown',
                      'splashHit': 'no-splash',
                      'criticalHit': False,
-                     'hitEffect': None,
+                     'hitEffect': 'unknown',
                      'damage': 0,
                      'dmgRatio': 0,
                      'oldHealth': 0,
@@ -307,7 +367,7 @@ class Data(object):
                      'costShell': 'unknown',
                      'shellKind': 'not_shell',
                      'teamDmg': 'unknown',
-                     'attackerVehicleType': '',
+                     'attackerVehicleType': 'not_vehicle',
                      'shortUserString': '',
                      'name': '',
                      'clanAbbrev': '',
@@ -320,7 +380,10 @@ class Data(object):
                      'fireDuration': None,
                      'diff-masses': None,
                      'nation': None,
-                     'blownup': False
+                     'blownup': False,
+                     'stun-duration': None,
+                     'shells_stunning': False,
+                     'critDevice': 'no-critical'
                      }
 
     def updateData(self):
@@ -351,7 +414,7 @@ class Data(object):
                     elif self.data['diff-masses'] is not None:
                         self.data['diff-masses'] = None
                 else:
-                    self.data['attackerVehicleType'] = None
+                    self.data['attackerVehicleType'] = 'not_vehicle'
                     self.data['shortUserString'] = None
                     self.data['level'] = None
                     self.data['nation'] = None
@@ -384,14 +447,16 @@ class Data(object):
             self.data['squadnum'] = statXVM.squadnum if statXVM is not None else None
         else:
             self.data['teamDmg'] = 'unknown'
-            self.data['attackerVehicleType'] = None
-            self.data['shortUserString'] = None
-            self.data['name'] = None
-            self.data['clanAbbrev'] = None
+            self.data['attackerVehicleType'] = 'not_vehicle'
+            self.data['shortUserString'] = ''
+            self.data['name'] = ''
+            self.data['clanAbbrev'] = ''
             self.data['level'] = None
             self.data['clanicon'] = None
             self.data['squadnum'] = None
             self.data['marksOnGun'] = None
+        self.updateLabels()
+
 
     def typeShell(self, effectsIndex):
         self.data['costShell'] = 'unknown'
@@ -401,9 +466,9 @@ class Data(object):
         player = BigWorld.player()
         attacker = player.arena.vehicles.get(self.data['attackerID'])
         if (attacker is None) or not attacker['vehicleType']:
-            self.data['shellKind'] = None
+            self.data['shellKind'] = 'not_shell'
             self.data['caliber'] = None
-            self.data['costShell'] = None
+            self.data['costShell'] = 'unknown'
             return
         for shell in attacker['vehicleType'].gun['shots']:
             _shell = shell['shell']
@@ -412,6 +477,7 @@ class Data(object):
                 self.data['caliber'] = _shell['caliber']
                 _id = _shell['id']
                 self.data['costShell'] = 'gold-shell' if _id[1] in self.shells[nations.NAMES[_id[0]]] else 'silver-shell'
+                self.data['shells_stunning'] = _id[1] in self.shells_stunning[nations.NAMES[_id[0]]]
                 break
 
     def timeReload(self, attackerID):
@@ -434,20 +500,18 @@ class Data(object):
             return 0.0
 
     def hitShell(self, attackerID, effectsIndex, damageFactor):
-        self.data['isDamage'] = damageFactor > 0
+        self.data['stun-duration'] = None
         self.data['attackerID'] = attackerID
         self.data['attackReasonID'] = effectsIndex if effectsIndex in [24, 25] else 0
         self.data['reloadGun'] = self.timeReload(attackerID)
         self.typeShell(effectsIndex)
-        if damageFactor:
+        self.data['damage'] = 0
+        if self.data['isDamage']:
             self.data['hitEffect'] = HIT_EFFECT_CODES[4]
+        elif self.data['shells_stunning']:
+            pass
         else:
-            self.data['damage'] = 0
             self.updateData()
-            if self.isReplay:
-                self.updateLabels()
-            else:
-                BigWorld.callback(0.03, self.updateLabels)
 
     def updateLabels(self):
         _log.callEvent = _logBackground.callEvent = not isDownAlt
@@ -457,24 +521,75 @@ class Data(object):
         _lastHit.output()
         _logBackground.output()
         _logAltBackground.output()
+        self.data['critDevice'] = 'no-critical'
+        self.data['criticalHit'] = False
+        self.data['isDamage'] = False
+        self.data['hitEffect'] = 'unknown'
 
     def showDamageFromShot(self, vehicle, attackerID, points, effectsIndex, damageFactor):
         maxHitEffectCode, decodedPoints = DamageFromShotDecoder.decodeHitPoints(points, vehicle.typeDescriptor)
         self.data['compName'] = decodedPoints[0].componentName if decodedPoints else 'unknown'
         self.data['splashHit'] = 'no-splash'
-        self.data['criticalHit'] = (maxHitEffectCode == 5)
-        if damageFactor == 0:
+        # self.data['criticalHit'] = (maxHitEffectCode == 5)
+        if not self.data['isDamage']:
             self.data['hitEffect'] = HIT_EFFECT_CODES[min(3, maxHitEffectCode)]
             self.data['isAlive'] = bool(vehicle.isCrewActive)
         self.hitShell(attackerID, effectsIndex, damageFactor)
 
     def showDamageFromExplosion(self, vehicle, attackerID, center, effectsIndex, damageFactor):
         self.data['splashHit'] = 'splash'
-        self.data['criticalHit'] = False
-        if damageFactor == 0:
+        # self.data['criticalHit'] = False
+        if not self.data['isDamage']:
             self.data['hitEffect'] = HIT_EFFECT_CODES[3]
             self.data['isAlive'] = bool(vehicle.isCrewActive)
         self.hitShell(attackerID, effectsIndex, damageFactor)
+
+    def updateStunInfo(self, vehicle, stunDuration):
+        self.data['stun-duration'] = stunDuration
+        if (not self.data['isDamage']) and (self.data['hitEffect'] in ('armor_pierced_no_damage', 'critical_hit')):
+            self.updateData()
+
+    def showVehicleDamageInfo(self, player, vehicleID, damageIndex, extraIndex, entityID, equipmentID):
+        dataUpdate = {
+            'attackerID': entityID,
+            'costShell': 'unknown',
+            'hitEffect': 'unknown',
+            'damage': 0,
+            'shellKind': 'not_shell',
+            'splashHit': 'no-splash',
+            'reloadGun': 0.0,
+            'stun-duration': None,
+            'compName': 'unknown'
+        }
+        damageCode = DAMAGE_INFO_CODES[damageIndex]
+        if damageCode in ('DEVICE_CRITICAL_AT_RAMMING', 'DEVICE_DESTROYED_AT_RAMMING'):
+            self.data['criticalHit'] = True
+            if extraIndex in DEVICES_TANKMAN:
+                self.data['critDevice'] = DEVICES_TANKMAN[extraIndex] if damageCode == 'DEVICE_CRITICAL_AT_RAMMING' else DEVICES_TANKMAN[extraIndex + 100]
+                vehicle = BigWorld.entities.get(player.playerVehicleID)
+                if self.data['oldHealth'] == vehicle.health:
+                    self.data.update(dataUpdate)
+                    self.data['attackReasonID'] = 2
+                    self.updateData()
+        elif damageCode in ('DEVICE_CRITICAL_AT_WORLD_COLLISION', 'DEVICE_DESTROYED_AT_WORLD_COLLISION', 'TANKMAN_HIT_AT_WORLD_COLLISION'):
+            self.data['criticalHit'] = True
+            if extraIndex in DEVICES_TANKMAN:
+                self.data['critDevice'] = DEVICES_TANKMAN[extraIndex + 100] if damageCode == 'DEVICE_DESTROYED_AT_WORLD_COLLISION' else DEVICES_TANKMAN[extraIndex]
+                vehicle = BigWorld.entities.get(player.playerVehicleID)
+                if self.data['oldHealth'] == vehicle.health:
+                    self.data.update(dataUpdate)
+                    self.data['attackReasonID'] = 3
+                    self.updateData()
+        elif damageCode == 'DEATH_FROM_DROWNING':
+            self.data.update(dataUpdate)
+            self.data['attackReasonID'] = 5
+            self.data['isAlive'] = False
+            self.data['criticalHit'] = False
+            self.updateData()
+        elif (damageCode in damageInfoCriticals) or (damageCode in damageInfoDestructions) or (damageCode in damageInfoTANKMAN):
+            if extraIndex in DEVICES_TANKMAN:
+                self.data['critDevice'] = DEVICES_TANKMAN[extraIndex + 100] if damageCode in damageInfoDestructions else DEVICES_TANKMAN[extraIndex]
+            self.data['criticalHit'] = True
 
     def onHealthChanged(self, vehicle, newHealth, attackerID, attackReasonID):
         if self.data['attackReasonID'] not in [24, 25]:
@@ -484,10 +599,11 @@ class Data(object):
         self.data['hitEffect'] = HIT_EFFECT_CODES[4]
         if self.data['attackReasonID'] != 0:
             self.data['costShell'] = 'unknown'
-            self.data['criticalHit'] = False
+            # self.data['criticalHit'] = False
             self.data['shellKind'] = 'not_shell'
             self.data['splashHit'] = 'no-splash'
             self.data['reloadGun'] = 0.0
+            self.data['stun-duration'] = None
         else:
             self.data['reloadGun'] = self.timeReload(attackerID)
         self.data['attackerID'] = attackerID
@@ -496,10 +612,6 @@ class Data(object):
         self.data['isAlive'] = (newHealth > 0) and bool(vehicle.isCrewActive)
         self.data['oldHealth'] = newHealth
         self.updateData()
-        if self.isReplay:
-            self.updateLabels()
-        else:
-            BigWorld.callback(0.03, self.updateLabels)
 
 
 data = Data()
@@ -515,19 +627,20 @@ def getValueMacroes(section, value):
     conf = readyConfig(section)
     macro = {'c:team-dmg': conf['c_teamDmg'][value['teamDmg']],
              'team-dmg': conf['teamDmg'].get(value['teamDmg'], ''),
-             'vtype': conf['vehicleClass'].get(value['attackerVehicleType'], 'not_vehicle'),
+             'vtype': conf['vehicleClass'][value['attackerVehicleType']],
              'c:costShell': conf['c_Shell'][value['costShell']],
              'costShell': conf['costShell'].get(value['costShell'], 'unknown'),
              'c:dmg-kind': conf['c_typeHit'][ATTACK_REASONS[value['attackReasonID']]],
              'dmg-kind': conf['typeHit'].get(ATTACK_REASONS[value['attackReasonID']], 'reason: %s' % value['attackReasonID']),
-             'c:vtype': conf['c_VehicleClass'].get(value['attackerVehicleType'], 'not_vehicle'),
+             'c:vtype': conf['c_VehicleClass'][value['attackerVehicleType']],
              'comp-name': conf['compNames'].get(value['compName'], 'unknown'),
              'splash-hit': conf['splashHit'].get(value['splashHit'], 'unknown'),
              'critical-hit': conf['criticalHit'].get('critical') if value['criticalHit'] else conf['criticalHit'].get('no-critical'),
-             'type-shell': conf['typeShell'].get(value['shellKind'], 'unknown'),
+             'type-shell': conf['typeShell'][value['shellKind']],
              'c:type-shell': conf['c_typeShell'][value['shellKind']],
-             'c:hit-effects': conf['c_HitEffect'][value['hitEffect']],
+             'c:hit-effects': conf['c_hitEffect'].get(value['hitEffect'], 'unknown'),
              'hit-effects': conf['hitEffect'].get(value['hitEffect'], 'unknown'),
+             'crit-device': conf['critDevice'].get(value.get('critDevice', '')),
              'number': value['number'],
              'dmg': value['damage'],
              'dmg-ratio': value['dmgRatio'],
@@ -565,6 +678,7 @@ def getValueMacroes(section, value):
              'diff-masses': value.get('diff-masses', None),
              'nation': value.get('nation', None),
              'my-blownup': 'blownup' if value['blownup'] else None,
+             'stun-duration': value.get('stun-duration', None)
              }
     return macro
 
@@ -664,6 +778,10 @@ class DamageLog(_Base):
                     if ('time' in key) and ('damage' in key) and ('numberLine' in key) and ((BigWorld.serverTime() - key['time']) < 1.0):
                         key['time'] = BigWorld.serverTime()
                         key['damage'] += data.data['damage']
+                        key['criticalHit'] = (key['criticalHit'] or data.data['criticalHit'])
+                        if key['damage'] > 0:
+                            self.dataLog['hitEffect'] = 'armor_pierced'
+                        self.dataLog['criticalHit'] = key['criticalHit']
                         self.dataLog['damage'] = key['damage']
                         self.dataLog['dmgRatio'] = self.dataLog['damage'] * 100 // data.data['maxHealth']
                         self.dataLog['number'] = len(self.listLog)
@@ -680,12 +798,14 @@ class DamageLog(_Base):
                     else:
                         self.dictVehicle[attackerID][attackReasonID] = {'time': BigWorld.serverTime(),
                                                                         'damage': data.data['damage'],
+                                                                        'criticalHit': data.data['criticalHit'],
                                                                         'numberLine': 0,
                                                                         'beginFire': beginFire if attackReasonID == 1 else None}
                         self.addLine(attackerID, attackReasonID)
                 else:
                     self.dictVehicle[attackerID][attackReasonID] = {'time': BigWorld.serverTime(),
                                                                     'damage': data.data['damage'],
+                                                                    'criticalHit': data.data['criticalHit'],
                                                                     'numberLine': 0,
                                                                     'beginFire': beginFire if attackReasonID == 1 else None}
                     self.addLine(attackerID, attackReasonID)
@@ -693,6 +813,7 @@ class DamageLog(_Base):
                 self.dictVehicle[attackerID] = {}
                 self.dictVehicle[attackerID][attackReasonID] = {'time': BigWorld.serverTime(),
                                                                 'damage': data.data['damage'],
+                                                                'criticalHit': data.data['criticalHit'],
                                                                 'numberLine': 0,
                                                                 'beginFire': beginFire if attackReasonID == 1 else None}
                 self.addLine(attackerID, attackReasonID)
@@ -803,47 +924,68 @@ _lastHit = LastHit(SECTION_LASTHIT)
 
 @overrideMethod(DamageLogPanel, '_addToTopLog')
 def DamageLogPanel_addToTopLog(base, self, value, actionTypeImg, vehicleTypeImg, vehicleName, shellTypeStr, shellTypeBG):
-    if not config.get('damageLog/disabledDetailStats'):
+    if config.get('damageLog/disabledDetailStats') and config.get('damageLog/enabled'):
+        return
+    else:
         return base(self, value, actionTypeImg, vehicleTypeImg, vehicleName, shellTypeStr, shellTypeBG)
 
 
 @overrideMethod(DamageLogPanel, '_addToBottomLog')
 def DamageLogPanel_addToBottomLog(base, self, value, actionTypeImg, vehicleTypeImg, vehicleName, shellTypeStr, shellTypeBG):
-    if not config.get('damageLog/disabledDetailStats'):
+    if config.get('damageLog/disabledDetailStats') and config.get('damageLog/enabled'):
+        return
+    else:
         return base(self, value, actionTypeImg, vehicleTypeImg, vehicleName, shellTypeStr, shellTypeBG)
 
 
 @overrideMethod(DamageLogPanel, 'as_summaryStatsS')
-def as_summaryStatsS(base, self, damage, blocked, assist, stun):
-    if not config.get('damageLog/disabledSummaryStats'):
+def DamageLogPanel_as_summaryStatsS(base, self, damage, blocked, assist, stun):
+    if config.get('damageLog/disabledSummaryStats') and config.get('damageLog/enabled'):
+        return
+    else:
         return base(self, damage, blocked, assist, stun)
 
 
 @overrideMethod(DamageLogPanel, '_onTotalEfficiencyUpdated')
-def _onTotalEfficiencyUpdated(base, self, diff):
-    if not config.get('damageLog/disabledSummaryStats'):
+def DamageLogPanel_onTotalEfficiencyUpdated(base, self, diff):
+    if config.get('damageLog/disabledSummaryStats') and config.get('damageLog/enabled'):
+        return
+    else:
         return base(self, diff)
 
 
 @registerEvent(Vehicle, 'onHealthChanged')
-def onHealthChanged(self, newHealth, attackerID, attackReasonID):
+def Vehicle_onHealthChanged(self, newHealth, attackerID, attackReasonID):
     global on_fire
-    if self.isPlayerVehicle and data.data['isAlive']:
-        data.onHealthChanged(self, newHealth, attackerID, attackReasonID)
-        if newHealth <= 0:
-            on_fire = 0
-            as_event('ON_FIRE')
-    elif hasattr(BigWorld.player().inputHandler.ctrl, 'curVehicleID'):
-        vId = BigWorld.player().inputHandler.ctrl.curVehicleID
-        v = vId if isinstance(vId, Vehicle) else BigWorld.entity(vId)
-        if (v is not None) and ((self.id == v.id) and not v.isAlive()):
-            on_fire = 0
-            as_event('ON_FIRE')
+    if config.get('damageLog/enabled'):
+        if self.isPlayerVehicle and data.data['isAlive']:
+            data.onHealthChanged(self, newHealth, attackerID, attackReasonID)
+            if newHealth <= 0:
+                on_fire = 0
+                as_event('ON_FIRE')
+        elif hasattr(BigWorld.player().inputHandler.ctrl, 'curVehicleID'):
+            vId = BigWorld.player().inputHandler.ctrl.curVehicleID
+            v = vId if isinstance(vId, Vehicle) else BigWorld.entity(vId)
+            if (v is not None) and ((self.id == v.id) and not v.isAlive()):
+                on_fire = 0
+                as_event('ON_FIRE')
+
+
+@registerEvent(PlayerAvatar, 'showVehicleDamageInfo')
+def PlayerAvatar_showVehicleDamageInfo(self, vehicleID, damageIndex, extraIndex, entityID, equipmentID):
+    if (vehicleID == self.playerVehicleID) and config.get('damageLog/enabled'):
+        data.showVehicleDamageInfo(self, vehicleID, damageIndex, extraIndex, entityID, equipmentID)
+
+
+@registerEvent(PlayerAvatar, 'updateVehicleHealth')
+def updateVehicleHealth(self, vehicleID, health, deathReasonID, isCrewActive, isRespawn):
+    if (vehicleID == self.playerVehicleID) and config.get('damageLog/enabled'):
+        data.data['isDamage'] = (health != data.data['oldHealth'])
 
 
 @registerEvent(Vehicle, 'onEnterWorld')
-def onEnterWorld(self, prereqs):
-    if self.isPlayerVehicle:
+def Vehicle_onEnterWorld(self, prereqs):
+    if self.isPlayerVehicle and config.get('damageLog/enabled'):
         global on_fire, damageLogConfig, autoReloadConfig
         data.isReplay = BattleReplay.isPlaying()
         autoReloadConfig = config.get('autoReloadConfig')
@@ -856,30 +998,39 @@ def onEnterWorld(self, prereqs):
 
 
 @registerEvent(Vehicle, 'showDamageFromShot')
-def showDamageFromShot(self, attackerID, points, effectsIndex, damageFactor):
-    if self.isPlayerVehicle and data.data['isAlive']:
+def Vehicle_showDamageFromShot(self, attackerID, points, effectsIndex, damageFactor):
+    if self.isPlayerVehicle and data.data['isAlive'] and config.get('damageLog/enabled'):
         data.showDamageFromShot(self, attackerID, points, effectsIndex, damageFactor)
 
 
 @registerEvent(Vehicle, 'showDamageFromExplosion')
-def showDamageFromExplosion(self, attackerID, center, effectsIndex, damageFactor):
-    if self.isPlayerVehicle and data.data['isAlive']:
+def Vehicle_showDamageFromExplosion(self, attackerID, center, effectsIndex, damageFactor):
+    if self.isPlayerVehicle and data.data['isAlive'] and config.get('damageLog/enabled'):
         data.showDamageFromExplosion(self, attackerID, center, effectsIndex, damageFactor)
 
 
+@registerEvent(Vehicle, 'updateStunInfo')
+def Vehicle_updateStunInfo(self):
+    if self.isPlayerVehicle and config.get('damageLog/enabled'):
+        stunDuration = self.stunInfo - BigWorld.serverTime() if self.stunInfo else None
+        if stunDuration is not None:
+            data.updateStunInfo(self, stunDuration)
+
+
 @registerEvent(DamagePanel, 'as_setFireInVehicleS')
-def as_setFireInVehicleS(self, isInFire):
+def DamagePanel_as_setFireInVehicleS(self, isInFire):
     global on_fire, beginFire
-    if isInFire:
-        on_fire = 100
-        beginFire = BigWorld.time()
-    else:
-        on_fire = 0
-    as_event('ON_FIRE')
+    if config.get('damageLog/enabled'):
+        if isInFire:
+            on_fire = 100
+            beginFire = BigWorld.time()
+        else:
+            on_fire = 0
+        as_event('ON_FIRE')
 
 
 @registerEvent(PlayerAvatar, '_PlayerAvatar__destroyGUI')
-def destroyGUI(self):
+def PlayerAvatar__destroyGUI(self):
     global on_fire
     on_fire = 0
     data.reset()
@@ -891,23 +1042,24 @@ def destroyGUI(self):
 
 
 @registerEvent(PlayerAvatar, 'handleKey')
-def handleKey(self, isDown, key, mods):
+def PlayerAvatar_handleKey(self, isDown, key, mods):
     global isDownAlt
-    hotkey = config.get('hotkeys/damageLogAltMode')
-    if hotkey['enabled'] and (key == hotkey['keyCode']):
-        if isDown:
-            if hotkey['onHold']:
-                if not isDownAlt:
-                    isDownAlt = True
+    if config.get('damageLog/enabled'):
+        hotkey = config.get('hotkeys/damageLogAltMode')
+        if hotkey['enabled'] and (key == hotkey['keyCode']):
+            if isDown:
+                if hotkey['onHold']:
+                    if not isDownAlt:
+                        isDownAlt = True
+                        as_event('ON_HIT')
+                else:
+                    isDownAlt = not isDownAlt
                     as_event('ON_HIT')
             else:
-                isDownAlt = not isDownAlt
-                as_event('ON_HIT')
-        else:
-            if hotkey['onHold']:
-                if isDownAlt:
-                    isDownAlt = False
-                    as_event('ON_HIT')
+                if hotkey['onHold']:
+                    if isDownAlt:
+                        isDownAlt = False
+                        as_event('ON_HIT')
 
 
 def dLog():
